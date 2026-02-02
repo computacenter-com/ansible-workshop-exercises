@@ -196,4 +196,3 @@ You have already been through all the steps needed, so try this for yourself.
 
     !!! info
         The output of the results is displayed once the command has completed.
-
