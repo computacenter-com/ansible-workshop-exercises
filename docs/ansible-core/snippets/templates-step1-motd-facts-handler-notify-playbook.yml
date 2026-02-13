@@ -10,7 +10,7 @@
   tasks:
     - name: Deploy message of the day file
       ansible.builtin.template:
-        src: motd-facts.j2
+        src: motd_facts.j2
         dest: /etc/motd
         owner: root
         group: root
