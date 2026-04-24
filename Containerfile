@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:24.04 AS builder
+FROM docker.io/ubuntu:26.04 AS builder
 WORKDIR /tmp
 # Install Git executable for git-revision-date-localized-plugin
 RUN apt-get update \
