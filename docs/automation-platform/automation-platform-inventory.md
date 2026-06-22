@@ -131,7 +131,7 @@ As you see, this time it worked. For tasks that have to run as `root` you need t
 
 ### Challenge Lab: Ad Hoc Commands
 
-Okay, a small challenge: **Run an ad hoc command to make sure the package "tmux" is installed on all `web` hosts.**
+Okay, a small challenge: **Run an ad hoc command to make sure the package `mlocate` is installed on all `web` hosts.**
 
 If unsure, consult the [documentation in your browser](https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/yum_module.html){:target="_blank"} or by running `ansible-doc yum` on the CLI of your Ansible control host.
 
@@ -145,7 +145,7 @@ If unsure, consult the [documentation in your browser](https://docs.ansible.com/
     * In the Web UI go to **Automation Execution → Infrastructure → Inventories** and select *Workshop Inventory*.  
     * Click the **Hosts** tab to change into the hosts view and select the three hosts by ticking the boxes to the left of the host entries.
     * Click **Run Command** button. In the next screen you have to specify the ad hoc command.
-    * Within the **Details** window, select **Module** `yum`, in **Arguments** type `name=tmux`, check **Enable privilege escalation** and click **Next**.
+    * Within the **Details** window, select **Module** `yum`, in **Arguments** type `name=mlocate`, check **Enable privilege escalation** and click **Next**.
     * Within the **Execution Environment** window, select **Default execution environment** and click **Next**.
     * Within the **Credential** window, select **Workshop Credentials** and click **Next**.
     * In the **Review** window, check the input and click **Finish**.
