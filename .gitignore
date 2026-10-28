@@ -1,5 +1,7 @@
+# Ansible Cache folder
 .ansible/
-ve-mkdocs-dev/
+# Development Python VE
+ve-docs-dev/
 # Build folder when running 'mkdocs build'
 site/
 # Assets downloaded by privacy plugin

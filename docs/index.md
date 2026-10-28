@@ -3,8 +3,8 @@
 Ansible is a radically simple IT automation system. It handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration.
 
 <figure markdown>
-  ![CC Logo](assets/images/ansible-community-logo-black.png#only-light){ width="300" .off-glb }
-  ![CC Logo](assets/images/ansible-community-logo-white.png#only-dark){ width="300" .off-glb }
+  ![CC Logo](assets/images/ansible-community-logo-black.png#only-light "https://github.com/ansible/logos" ){ width="300" .off-glb loading=lazy }
+  ![CC Logo](assets/images/ansible-community-logo-white.png#only-dark "https://github.com/ansible/logos"){ width="300" .off-glb loading=lazy }
   <figcaption></figcaption>
 </figure>
 
@@ -39,16 +39,17 @@ You’ll start off by writing your first Ansible playbook, work on Jinja templat
 
         Hover over AAP, SSH or YAML to view the full or written out form.
 
-      * Images can be clicked to enlarge!
+      * Images can often be clicked to enlarge!
 
         <figure markdown>
-          ![ansible rhel lab diagram](rhel_lab_diagram.png){ width=60% loading=lazy }
+          ![ansible rhel lab diagram](assets/images/rhel_lab_diagram.png){ width=60% loading=lazy }
           <figcaption></figcaption>
         </figure>
 
     !!! info
         The [Ansible Basics](ansible-basics-overview.md) and [Automation Platform](automation-platform-overview.md) exercises are **guided**, if you follow the steps (**the exercises build on each other**), you'll be fine.  
         You'll encounter some **challenge labs**, they don't show you how its done, you have to use the knowledge of the previous exercises to achieve the solution.  
-        The [Projects](projects-overview.md) are **not guided** (or *less* guided), still, if you follow the steps, you'll achieve the solution!
+        The [Projects][projects-overview] are **not guided** (or *less* guided), still, if you follow the steps, you'll achieve the solution!
 
-**After finishing this lab and the exercises you are ready to start using Ansible for your automation requirements!**
+!!! success
+    **After finishing the workshop and the exercises you'll be ready to use Ansible for your automation requirements!**

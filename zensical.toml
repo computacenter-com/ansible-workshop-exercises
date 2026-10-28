@@ -1,0 +1,233 @@
+[project]
+site_name = "Ansible Workshop - Exercise Guide"
+site_description = "Best Practices and Style Guide for Ansible Projects"
+site_author = "Tim Grützmacher"
+site_url = "https://computacenter-com.github.io/ansible-best-practices/"
+copyright = "Copyright &copy; Tim Grützmacher 2026"
+
+repo_url = "https://github.com/computacenter-com/ansible-workshop-exercises"
+repo_name = "computacenter-com/ansible-workshop-exercises"
+
+extra_javascript = [
+    "https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js",
+    "assets/javascripts/extra/tablesort.js",
+    "assets/javascripts/extra/mermaid-logos.js"
+]
+
+extra_css = [
+    "assets/stylesheets/extra.css",
+    "assets/stylesheets/tables.css"
+]
+
+nav = [
+    {"Workshop Overview" = [
+        "index.md",
+        "demo-environment/red-hat-demo-environment.md",
+        "demo-environment/local-demo-environment.md",
+        "demo-environment/editor-alternatives.md"
+    ]},
+    {"Ansible Basics" = [
+        "ansible-basics-overview.md",
+        {"1 - Check prerequisites" = "ansible-core/ansible-core-intro.md"},
+        {"2 - Ansible Basics" = "ansible-core/ansible-core-basics.md"},
+        {"3 - Playbooks" = "ansible-core/ansible-core-playbook.md"},
+        {"4 - Variables" = "ansible-core/ansible-core-variables.md"},
+        {"5 - Conditionals" = "ansible-core/ansible-core-conditionals.md"},
+        {"6 - Loops" = "ansible-core/ansible-core-loops.md"},
+        {"7 - Handlers" = "ansible-core/ansible-core-handlers.md"},
+        {"8 - Templates" = "ansible-core/ansible-core-templates.md"},
+        {"9 - Roles" = "ansible-core/ansible-core-roles.md"},
+        "ansible-core/ansible-core-supplemental.md",
+    ]},
+    {"Automation Platform" = [
+        "automation-platform-overview.md",
+        { "1 - AAP Introduction" = "automation-platform/automation-platform-intro.md" },
+        { "2 - Inventory & Ad-hoc commands" = "automation-platform/automation-platform-inventory.md" },
+        { "3 - Projects & Job Templates" = "automation-platform/automation-platform-projects.md" },
+        { "4 - Surveys" = "automation-platform/automation-platform-surveys.md" },
+        { "5 - Role-based access control" = "automation-platform/automation-platform-rbac.md" },
+        { "6 - Workflows" = "automation-platform/automation-platform-workflows.md" },
+        { "7 - AAP Wrap up" = "automation-platform/automation-platform-wrapup.md" }
+    ]},
+    {"Projects" = [
+        "projects/projects-overview.md",
+        { "Project - Linux" = "projects/linux-automation/prometheus-node-exporter-project.md" },
+        { "Project - Network" = "projects/network-automation/apic-project.md" },
+        { "Project - Cloud" = "projects/cloud-automation/aws-project.md" },
+        { "Project - DCIM" = "projects/dcim-ipam-automation/netbox-project.md" }
+    ]},
+    {"Ansible Advanced" = [
+        "ansible-advanced-overview.md",
+        "ansible-navigator/ansible-navigator.md"
+    ]}
+]
+
+# ----------------------------------------------------------------------------
+# Section for configuring theme options
+# ----------------------------------------------------------------------------
+[project.theme]
+variant = "classic"
+
+# Uncomment to display announcement banner
+# custom_dir = "docs/assets/overrides"
+
+logo = "assets/images/ansible-logo-black.png"
+favicon = "assets/images/ansible-logo-black.png"
+
+language = "en"
+
+# Zensical provides a number of feature toggles that change the behavior
+# of the documentation site.
+features = [
+    # "announce.dismiss",
+    "content.code.annotate",
+    "content.code.copy",
+    "content.footnote.tooltips",
+    "content.tooltips",
+    "navigation.footer",
+    "navigation.indexes",
+    "navigation.instant",
+    "navigation.instant.prefetch",
+    "navigation.path",
+    "navigation.prune",
+    "navigation.sections",
+    "navigation.tabs",
+    "navigation.top",
+    "navigation.tracking",
+    "toc.follow"
+    ]
+
+# ----------------------------------------------------------------------------
+# The "theme" defines colors and more.
+# ----------------------------------------------------------------------------
+[project.theme.icon.admonition]
+example = "lucide/search-code"
+quote = "lucide/folder-tree"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+palette.primary = "light blue"
+palette.accent = "red"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+palette.primary = "grey"
+palette.accent = "red"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+# ----------------------------------------------------------------------------
+# The "extra" section contains miscellaneous settings.
+# ----------------------------------------------------------------------------
+[[project.extra.social]]
+icon = "fontawesome/brands/docker"
+link = "https://github.com/computacenter-com/ansible-workshop-exercises/blob/main/Containerfile"
+name = "Container Definition"
+
+[[project.extra.social]]
+icon = "simple/githubactions"
+link = "https://github.com/computacenter-com/ansible-workshop-exercises/actions"
+name = "CI/CD Pipelines"
+
+[project.extra.status]
+new = "Recently added"
+updated = "Recently updated"
+
+# ----------------------------------------------------------------------------
+# Markdown Extensions
+# ----------------------------------------------------------------------------
+[project.markdown_extensions.abbr]
+# https://zensical.org/docs/authoring/content-tabs/#content-tabs
+
+[project.markdown_extensions.admonition]
+# https://zensical.org/docs/setup/extensions/python-markdown/#admonition
+
+[project.markdown_extensions.attr_list]
+# https://zensical.org/docs/setup/extensions/python-markdown/#attribute-lists
+
+[project.markdown_extensions.md_in_html]
+# https://zensical.org/docs/setup/extensions/python-markdown/#markdown-in-html
+
+# ----------------------------------------------------------------------------
+# Markdown Extensions PyMdownX
+# ----------------------------------------------------------------------------
+[project.markdown_extensions.pymdownx.blocks.caption]
+# https://zensical.org/docs/setup/extensions/python-markdown-extensions/#caption
+
+[project.markdown_extensions.pymdownx.details]
+# https://zensical.org/docs/setup/extensions/python-markdown-extensions/#details
+
+[project.markdown_extensions.pymdownx.emoji]
+# https://zensical.org/docs/setup/extensions/python-markdown-extensions/#emoji
+emoji_generator = "zensical.extensions.emoji.to_svg"
+emoji_index = "zensical.extensions.emoji.twemoji"
+
+[project.markdown_extensions.pymdownx.highlight]
+# https://zensical.org/docs/setup/extensions/python-markdown-extensions/#highlight
+anchor_linenums = true
+line_spans = "__span"
+linenums_style = "pymdownx-inline"
+pygments_lang_class = true
+
+[project.markdown_extensions.pymdownx.inlinehilite]
+# https://zensical.org/docs/setup/extensions/python-markdown-extensions/#inlinehilite
+
+[project.markdown_extensions.pymdownx.keys]
+# https://zensical.org/docs/setup/extensions/python-markdown-extensions/#keys
+
+[project.markdown_extensions.pymdownx.snippets]
+# https://zensical.org/docs/setup/extensions/python-markdown-extensions/#snippets
+auto_append = ["includes/abbreviations.md"]
+base_path = [
+    ".",
+    "docs/ansible-core/snippets",
+    "docs/automation-platform/snippets",
+    "docs/projects/cloud-automation/snippets",
+    "docs/projects/linux-automation/snippets"
+]
+
+[project.markdown_extensions.pymdownx.superfences]
+# https://zensical.org/docs/setup/extensions/python-markdown-extensions/#superfences
+custom_fences = [{ name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }]
+
+[project.markdown_extensions.pymdownx.tabbed]
+# https://zensical.org/docs/authoring/content-tabs/#content-tabs
+alternate_style = true
+
+[project.markdown_extensions.pymdownx.tasklist]
+custom_checkbox = true
+
+# ----------------------------------------------------------------------------
+# Markdown Extensions Zensical
+# ----------------------------------------------------------------------------
+[project.markdown_extensions.zensical.extensions.preview]
+# https://zensical.org/docs/setup/navigation/#instant-previews
+configurations = [
+  { sources.include = [
+    "index.md",
+    "get-started/index.md",
+    "ansible/index.md",
+    "automation-platform/index.md",
+    "development/index.md"
+    ]},
+]
+
+# ----------------------------------------------------------------------------
+# Plugins
+# ----------------------------------------------------------------------------
+[project.plugins.autorefs]
+
+[project.plugins.glightbox]
+
+[project.plugins.minify]
+minify_html = true
+minify_js = true

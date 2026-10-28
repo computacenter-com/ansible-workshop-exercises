@@ -1,15 +1,13 @@
-[data-md-color-scheme="computacenter-light"] {
-    --md-primary-fg-color:        #009DDC;
-    --md-primary-fg-color--light: #009DDC;
-    --md-primary-fg-color--dark:  #24387F;
-  }
-
-[data-md-color-scheme="computacenter-light"] img[src$="#only-dark"],
-[data-md-color-scheme="computacenter-light"] img[src$="#gh-dark-mode-only"] {
-    display: none; /* Hide dark images in light mode */
+/* Light mode */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #49ABEB;
+  --md-primary-fg-color--light: #49ABEB;
+  --md-primary-fg-color--dark:  #0D21A0;
 }
 
-[data-md-color-scheme="computacenter-dark"] img[src$="#only-light"],
-[data-md-color-scheme="computacenter-dark"] img[src$="#gh-light-mode-only"] {
-  display: none; /* Hide light images in dark mode */
+/* Dark mode */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #011749;
+  --md-primary-fg-color--light: #009DDC;
+  --md-primary-fg-color--dark:  #0D21A0;
 }

@@ -6,7 +6,10 @@ Every Workshop attendant has his own demo environment.
 
 The Lab environment consist of an *Ansible control node* (called `ansible-1`) and three *Managed nodes* (called `node1`, `node2` and `node3`). All managed nodes are RHEL 8 hosts and are reachable password-less with SSH.
 
-![ansible rhel lab diagram](rhel_lab_diagram.png)
+<figure markdown="span">
+  ![Red Hat Demo environment lab diagram](images/rhel_lab_diagram.png){ .off-glb loading=lazy }
+  <figcaption></figcaption>
+</figure>
 
 You will be logged in to the *Ansible Control node* with the Code editor *Visual Studio Code*. From here you will be writing all your playbooks and issuing all Ansible CLI commands.
 
@@ -27,11 +30,17 @@ Nevertheless, mastering to write Ansible playbooks without the help of a Code ed
 The *Ansible* extension supports *syntax-highlighting* for Ansible content. Depending on the used *theme* of VScode, this might not be shown correctly. Use the **Default Dark+** theme.  
 Click on *File* in the top menu bar, click on *Preferences* and open *Settings*. Search for `theme` and choose the *Dark+ (default dark)* from the drop-down menu.
 
-![Workbench Color Theme](WorkbenchColorTheme.png)
+<figure markdown="span">
+  ![Workbench Color Theme](images/WorkbenchColorTheme.png){ .off-glb loading=lazy }
+  <figcaption></figcaption>
+</figure>
 
 #### Terminal Scrollback
 
 By default, scrollback of only 1000 lines is possible. If you need to scroll back further, you need to adjust this limit.  
 Click on *File* in the top menu bar, click on *Preferences* and open *Settings*. Search for `scrollback` and adjust the number to 10000 in the second configuration parameter (*Terminal > Integrated: Scrollback*).
 
-![Terminal Scrollback configuration](TerminalScrollback.png)
+<figure markdown="span">
+  ![Terminal Scrollback configuration](images/TerminalScrollback.png){ .off-glb loading=lazy }
+  <figcaption></figcaption>
+</figure>

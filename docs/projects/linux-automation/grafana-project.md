@@ -1,15 +1,9 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-projects-cover.html.j2
----
-
-# Project - Linux automation
+# Grafana Installation & Configuration
 
 To further enhance your Ansible skills, let's deploy the monitoring tool *Grafana* to one of the nodes in the demo environment.
 
 <figure markdown>
-  ![Grafana Logo](grafana-logo.png){ .off-glb }
+  ![Grafana Logo](grafana-logo.png){ loading=lazy }
   <figcaption></figcaption>
 </figure>
 
@@ -56,7 +50,7 @@ flowchart LR
 
 Create a new project folder in your home directory:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ mkdir grafana-deployment
 ```
 
@@ -65,7 +59,7 @@ Create a small Ansible configuration file (`ansible.cfg`) and instruct Ansible t
 
 For example, you may check your inventory with the `ansible-inventory` CLI utility. In this case, the host has an alias of *grafana-instance1* which is part of a group *grafana*:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-inventory --graph --vars
 @all:
   |--@ungrouped:
@@ -108,7 +102,7 @@ Achieve the following tasks:
 
 Ensure that Grafana is running with an ad hoc command:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 grafana-deployment]$ ansible grafana -a "systemctl status grafana-server"
 node2 | CHANGED | rc=0 >>
 ● grafana-server.service - Grafana instance
@@ -129,9 +123,9 @@ This is how it would look, on the left in the default **dark** theme, the right 
 
 <div class="grid" markdown>
 
-![Grafana with black background](grafana-dark-background.png)
+![Grafana with black background](grafana-dark-background.png){ loading=lazy }
 
-![Grafana with white background](grafana-light-background.png)
+![Grafana with white background](grafana-light-background.png){ loading=lazy }
 
 </div>
 

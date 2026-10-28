@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-aap-cover.html.j2
----
-
 # 1 - AAP Introduction
+
+[](){ #aap-intro }
 
 ## Objective
 
@@ -36,7 +32,7 @@ Some additional infos and tools of the Automation Platform offering from Red Hat
 * [ansible-builder](https://github.com/ansible/ansible-builder){:target="_blank"} - not specifically covered in this workshop, `ansible-builder` is a command line utility to automate the process of building Execution Environments.
 * [ansible-navigator](https://github.com/ansible/ansible-navigator){:target="_blank"} - a command line utility and text-based user interface (TUI) for running and developing Ansible automation content, especially for running Execution Environments. We won't cover this tool specifically in the first day, but you can always do all exercises with the Navigator if you want to.
 
-If you need more information on new Ansible Automation Platform components bookmark this landing page [https://red.ht/AAP-20](https://red.ht/AAP-20){:target="_blank"}
+If you need more information on Ansible Automation Platform components bookmark take a look at the [official documentation](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/latest/discover-ansible_components){:target="_blank"}.
 
 ### Your Ansible automation controller lab environment
 
@@ -58,7 +54,7 @@ Let's have a first look at the **automation controller**: Point your browser to 
 
 The controller’s dashboard offers a real-time view of recent job activity, managed hosts and hands-on quick starts to get you started as quickly as possible with Ansible Automation Platform.
 
-![Ansible automation controller dashboard](images/aap25-dashboard.png)
+![Ansible automation controller dashboard](images/aap25-dashboard.png){ loading=lazy .on-glb }
 
 ### Core Concepts
 

@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-aap-cover.html.j2
----
-
 # 4 - Surveys
+
+[](){ #aap-surveys }
 
 ## Objective
 
@@ -79,7 +75,7 @@ Now you create a new Template that includes a survey.
 | Answer Variable Name | `first_line` |
 | Answer Type          | `Text`       |
 
-![Survey Q1](images/survey_q1.png)
+![Survey Q1](images/survey_q1.png){ loading=lazy }
 
 * Click **Create survey question**.
 * Click **Create survey question** to create a second **Survey Question**
@@ -90,7 +86,7 @@ Now you create a new Template that includes a survey.
 | Answer Variable Name | `second_line` |
 | Answer Type          | `Text`        |
 
-![Survey Q2](images/survey_q2.png)
+![Survey Q2](images/survey_q2.png){ loading=lazy }
 
 * Enable the survey by toggling the **Survey disabled** button to the **On** position.
 
@@ -100,13 +96,13 @@ Now, launch the **Create index.html** job template by clicking the **Launch temp
 
 Before the actual launch the survey will ask for **First Line** and **Second Line**. Fill in some text and click **Next**. The **Preview** window shows the values, if all is good run the Job by clicking **Finish**.
 
-![Survey Launch](images/survey_launch.png)
+![Survey Launch](images/survey_launch.png){ loading=lazy }
 
-![Survey Review](images/survey_review.png)
+![Survey Review](images/survey_review.png){ loading=lazy }
 
 After the job has completed, check the Apache homepage. In the SSH console on the control host, execute `curl` against `node1`:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student1@ansible-1 ~]$ curl http://node1
 <body>
 <h1>Apache is running fine</h1>

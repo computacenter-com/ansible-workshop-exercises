@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-aap-cover.html.j2
----
-
 # 5 - Role-based access control
+
+[](){ #aap-rbac }
 
 ## Objective
 
@@ -38,7 +34,7 @@ Let’s create a user:
 
 * Click **Create user**.
 
-![create user](images/create_user.png)
+![create user](images/create_user.png){ loading=lazy }
 
 ### Ansible automation controller teams
 
@@ -56,7 +52,7 @@ Add a user to the team:
 * Go to the **Users** tab and click **Add users**.
 * In the **Add users** window, choose **wweb**, then click **Add users**.
 
-![add user](images/add_user.png)
+![add user](images/add_user.png){ loading=lazy }
 
 ### Granting permissions
 

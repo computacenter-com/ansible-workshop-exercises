@@ -7,7 +7,7 @@ This section shows tools in the Ansible world which will become more and more re
 * Ansible Builder
 
 <figure markdown>
-  [![Ansible Logo](ansible-birthday-bull.png){ width="300", loading=lazy .off-glb }](http://github.com/ansible/logos)
+  ![Ansible Logo](assets/images/ansible-birthday-bull.png "http://github.com/ansible/logos"){ width="250" .off-glb loading=lazy }
   <figcaption></figcaption>
 </figure>
 

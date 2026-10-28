@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-aap-cover.html.j2
----
-
 # 6 - Workflows
+
+[](){ #aap-workflows }
 
 ## Objective
 
@@ -103,7 +99,7 @@ Within **Automation Execution → Templates → Create template → Create job t
 
 Click **Create job template**.
 
-![create_template_webops](images/create_template_webops.png)
+![create_template_webops](images/create_template_webops.png){ loading=lazy }
 
 Click **Create job template**, and then repeat the process for the **Node.js Deploy** template, changing the project to **Webdev Git Repo** and the playbook to `rhel/webdev/install_node_app.yml`.
 
@@ -137,28 +133,28 @@ Within **Automation Execution → Templates → Create template → Create workf
 
 Click **Create workflow job template** to open the **Workflow Visualizer**.
 
-![add_step](images/visualizer_add_step.png)
+![add_step](images/visualizer_add_step.png){ loading=lazy }
 
 Click the **Add Step** button and assign the **Web App Deploy** job template to the first node. Add a second node by clicking the 3 dot sign, selecting the "Add step and link"  and assign the **Node.js Deploy** template with the **Run on success** status type. Select **Next** and **Finish** to complete the workflow.
 
-![app_deploy](images/visualizer_add_step_app_deploy.png)
+![app_deploy](images/visualizer_add_step_app_deploy.png){ loading=lazy }
 
-![add_link](images/visualizer_add_step_add_link.png)
+![add_link](images/visualizer_add_step_add_link.png){ loading=lazy }
 
-![add_nodejs](images/visualizer_add_step_nodejs.png)
+![add_nodejs](images/visualizer_add_step_nodejs.png){ loading=lazy }
 
 Click **Save** to finalize the workflow.
 
 !!! tip
     The run type allows for more complex workflows. You could lay out different execution paths for successful and for failed playbook runs.
 
-![overview](images/visualizer_overview.png)
+![overview](images/visualizer_overview.png){ loading=lazy }
 
 ### Launch workflow
 
 Within the **Deploy Webapp Server** template, click **Launch template**.
 
-![launch_template](images/launch_template.png)
+![launch_template](images/launch_template.png){ loading=lazy }
 
 Once the workflow completes, verify the result.
 

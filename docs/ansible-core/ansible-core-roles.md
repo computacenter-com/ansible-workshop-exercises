@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-core-cover.html.j2
----
-
 # 9 - Reusability with Roles
+
+[](){ #ansible-core-roles }
 
 ## Objective
 
@@ -70,14 +66,14 @@ Ansible looks for roles in a subdirectory called `roles` in the project director
 
 Okay, lets start to build a role. We'll build a role that installs and configures Apache to serve a virtual host. Run these commands in your `~/ansible_files` directory:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ mkdir roles
 [student@ansible-1 ansible_files]$ ansible-galaxy init --offline roles/apache_webserver
 ```
 
 Have a look at the role directories and their content:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ tree roles
 ```
 
@@ -214,28 +210,28 @@ Now you are ready to run your playbook:
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook test_apache_role.yml
     ```
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run test_apache_role.yml -m stdout
     ```
 
 Run a curl command against `node2` to confirm that the role worked or use the `check_httpd.yml` playbook (you may need to adjust the variable in it to `node2:8080`):
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ curl -s http://node2:8080
 <body>
 <h1>The virtual host configuration works!</h1>
 </body>
 ```
 
-!!! warning
-    If you are using the [local development environment](local-demo-environment.md#lab-diagram), remember, you are using containers instead of actual VMs! You need to **append the correct port** (e.g. `curl http://node1:8003"` for Port 8080 of *node1*, or `curl http://node2:8006"` for Port 8080 of *node2*).  
-    Take a look at the [table with the ports](local-demo-environment.md#lab-diagram) overview or execute `podman ps` and check the output.
+??? warning "Using the local development environment?"
+    Remember, you are using containers instead of actual VMs! You need to **append the correct port** (e.g. `curl http://node1:8003"` for Port 8080 of *node1*, or `curl http://node2:8006"` for Port 8080 of *node2*).  
+    Take a look at the [table with the ports][local-demo-environment-lab-diagram] overview or execute `podman ps` and check the output.
 
 You can also use the IP address of node2 (copy it from your inventory) and paste it into the browser (as well as adding `:8080`).
 
@@ -246,19 +242,19 @@ Congratulations! You have successfully completed this exercise!
 Did the final curl work?  
 You can see what ports the web server is running on by using the netstat command, connect to the managed node via SSH:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 #> sudo netstat -tulpn
 ```
 
 If *netstat* is not present, install it with this command:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 #> sudo dnf install -y net-tools
 ```
 
 There should be a line like this:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 tcp6       0      0 :::8080                 :::*                    LISTEN      25237/httpd
 ```
 

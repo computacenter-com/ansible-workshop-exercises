@@ -3,19 +3,19 @@
 Day 2 of the Ansible Workshop is all about the Ansible Automation Platform and usage of the Ansible Automation Controller.
 
 <figure markdown>
-  [![Ansible Automation Platform Logo](rh-ansible-automation-platform.png){ loading=lazy }](http://github.com/ansible/logos)
+  ![Ansible Automation Platform Logo](assets/images/rh-ansible-automation-platform.png "http://github.com/ansible/logos"){ loading=lazy }
   <figcaption></figcaption>
 </figure>
 
 You will complete the following exercises today:
 
-* [Exercise 1 - Introduction](automation-platform-intro.md)
-* [Exercise 2 - Inventories, credentials and ad hoc commands](automation-platform-inventory.md)
-* [Exercise 3 - Projects & Job Templates](automation-platform-projects.md)
-* [Exercise 4 - Surveys](automation-platform-surveys.md)
-* [Exercise 5 - Role-based access control](automation-platform-rbac.md)
-* [Exercise 6 - Workflows](automation-platform-workflows.md)
-* [Exercise 7 - AAP Wrap up](automation-platform-wrapup.md)
+* [Exercise 1 - Introduction][aap-intro]
+* [Exercise 2 - Inventories, credentials and ad hoc commands][aap-inventory]
+* [Exercise 3 - Projects & Job Templates][aap-projects]
+* [Exercise 4 - Surveys][aap-surveys]
+* [Exercise 5 - Role-based access control][aap-rbac]
+* [Exercise 6 - Workflows][aap-workflows]
+* [Exercise 7 - AAP Wrap up][aap-wrapup]
 
 Here are some additional information of the the Ansible Automation Platform:
 
@@ -43,9 +43,9 @@ Automation operators are typically the primary individuals who interact directly
 
 ### Automation mesh
 
+Automation mesh is an overlay network intended to ease the distribution of work across a large and dispersed collection of workers. Mesh nodes establish peer-to-peer connections with each other across your existing networks bringing automation closer to the endpoints that need it.
+
 <figure markdown>
-  ![Automation mesh](mesh_logical.png){ loading=lazy .off-glb }
+  ![Automation mesh](assets/images/mesh_logical.png){ width="400" .off-glb loading=lazy }
   <figcaption></figcaption>
 </figure>
-
-Automation mesh is an overlay network intended to ease the distribution of work across a large and dispersed collection of workers. Mesh nodes establish peer-to-peer connections with each other across your existing networks bringing automation closer to the endpoints that need it.

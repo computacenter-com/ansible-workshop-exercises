@@ -1,18 +1,15 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-aap-cover.html.j2
----
-
 # 2 - Inventory & Ad-hoc commands
+
+[](){ #aap-inventory }
 
 ## Objective
 
-Explore and understand the lab environment.  This exercise will cover
+Explore and understand the lab environment.  
+This exercise will cover:
 
 * Locating and understanding:
-    * Ansible Automation Controller [**Inventory**](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/using_automation_execution/controller-inventories){:target="_blank"}
-    * Ansible Automation Controller [**Credentials**](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/using_automation_execution/controller-credentials){:target="_blank"}
+    * Ansible Automation Controller [**Inventory**](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/latest/get_started-con_gs_about_sources_targets){:target="_blank"}
+    * Ansible Automation Controller [**Credentials**](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.7/secure-assembly_controller_credentials){:target="_blank"}
 
 * Running ad hoc commands via the Ansible Automation Controller web UI
 
@@ -28,7 +25,7 @@ In the left pane, navigate to **Automation Execution → Infrastructure → Inve
 
 To view **all** hosts, from **all** inventories (there may be multiple or even dozens of different inventories), navigate to **Automation Execution → Infrastructure → Hosts**
 
-![Hosts overview](images/hosts.png)
+![Hosts overview](images/hosts.png){ loading=lazy }
 
 ### Examine Machine Credentials
 
@@ -138,7 +135,10 @@ If unsure, consult the [documentation in your browser](https://docs.ansible.com/
 !!! tip
     The *Arguments* you want to provide for your desired module need to be provided as key-value-pairs separated with `=` (the same way as you would do on the [command-line](https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html){:target="_blank"}), **multiple arguments need to be separated by *whitespace***.
 
-    ![Ad-hoc arguments](ad_hoc_arguments.png)
+    <figure markdown="span">
+      ![Ad-hoc arguments](images/ad_hoc_arguments.png){ loading=lazy }
+      <figcaption></figcaption>
+    </figure>
 
 ??? success "Solution"
 

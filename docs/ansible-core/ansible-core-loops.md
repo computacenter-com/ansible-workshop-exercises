@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-core-cover.html.j2
----
-
 # 6 - Run tasks multiple times
+
+[](){ #ansible-core-loops }
 
 ## Objective
 
@@ -92,7 +88,7 @@ Afterwards, verify that the user `prod_user` was indeed created on `node1` using
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     $ ansible-playbook user_id.yml
 
     PLAY [Get user ID play] ******************************************************************************************
@@ -116,7 +112,7 @@ Afterwards, verify that the user `prod_user` was indeed created on `node1` using
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     $ ansible-navigator run user_id.yml -m stdout
 
     PLAY [Get user ID play] ******************************************************************************************

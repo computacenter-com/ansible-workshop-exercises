@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-core-cover.html.j2
----
-
 # 7 - Trigger changes with Handlers
+
+[](){ #ansible-core-handlers }
 
 ## Objective
 
@@ -60,7 +56,7 @@ Listen 8080
 
 Apache should now listen on port 8080. Easy enough to verify:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ curl http://node1
 curl: (7) Failed to connect to node1 port 80: Connection refused
 [student@ansible-1 ansible_files]$ curl http://node1:8080
@@ -69,8 +65,8 @@ curl: (7) Failed to connect to node1 port 80: Connection refused
 </body>
 ```
 
-!!! warning
-    If you are using the [local development environment](local-demo-environment.md#lab-diagram), remember, you are using containers instead of actual VMs! You need to **append the correct port** (e.g. `curl http://node1:8002"` for Port 80, `curl http://node1:8003"` for Port 8080).  
-    Take a look at the [table with the ports](local-demo-environment.md#lab-diagram) overview or execute `podman ps` and check the output.
+??? warning "Using the local development environment?"
+    Remember, you are using containers instead of actual VMs! You need to **append the correct port** (e.g. `curl http://node1:8002"` for Port 80, `curl http://node1:8003"` for Port 8080).  
+    Take a look at the [table with the ports][local-demo-environment-lab-diagram] overview or execute `podman ps` and check the output.
 
 Run the playbook one last time. As the configuration file is already copied over with the desired configuration state, the handler is not triggered, Apache will keep running.

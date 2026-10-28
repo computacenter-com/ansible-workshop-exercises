@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-core-cover.html.j2
----
-
 # Bonus exercises
+
+[](){ #ansible-core-supplemental }
 
 You have finished the lab already. But it doesn’t have to end here. We prepared some slightly more advanced bonus labs for you to follow through if you like. So if you are done with the labs and still have some time, here are some more labs for you:
 
@@ -17,13 +13,13 @@ Let's break the initially working (password-less) SSH-connection in the lab envi
 
 Download a script using the next command. Copy the command by clicking the *copy* button on the right of the code block:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 wget -q https://gist.githubusercontent.com/TimGrt/2c0b66873affd4710c90517cd9284bb6/raw/9cfffa586d1357a89ac0eacbb525d11e323abf62/break-ssh.sh
 ```
 
 After downloading the script to your home directory, execute it:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ wget -q https://gist.githubusercontent.com/TimGrt/2c0b66873affd4710c90517cd9284bb6/raw/9cfffa586d1357a89ac0eacbb525d11e323abf62/break-ssh.sh
 [student@ansible-1 ~]$ sh break-ssh.sh
 [student@ansible-1 ~]$
@@ -36,20 +32,20 @@ After downloading the script to your home directory, execute it:
 
 Create your own SSH-Key-Pair, use this command:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 ssh-keygen -f ~/.ssh/ansible-key -P ""
 ```
 
 Next, SSH to the *ec2-user* on *node1*.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ssh ec2-user@node1
 [ec2-user@node1 ~]$
 ```
 
 Your are now on *node1*. Switch to the *root* user and create a new user `ansible` (with a home directory). After creating the user, switch to the `ansible` user:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [ec2-user@node1 ~]$ sudo su - root
 Last login: Sun Apr 17 08:36:53 UTC 2022 on pts/0
 [root@node1 ~]# useradd ansible
@@ -59,14 +55,14 @@ Last login: Sun Apr 17 08:36:53 UTC 2022 on pts/0
 
 Ensure that you are the *ansible* user, we need to create the (hidden) `.ssh` directory and the `authorized_keys` file in it. The `authorized_keys` file houses the **public** key of user *student* on the *ansible-1* host, copy the key to the file (press *i* in *vi* to enter the *insert mode*):
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [ansible@node1 ~]$ mkdir .ssh
 [ansible@node1 ~]$ vi .ssh/authorized_keys
 ```
 
 Now we have to set the correct permissions, the `.ssh` directory needs *0700*, the `authorized_keys` file needs *0600*.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [ansible@node1 ~]$ chmod 0700 .ssh
 [ansible@node1 ~]$ chmod 0600 .ssh/authorized_keys
 ```
@@ -78,7 +74,7 @@ Good! We now have established a service user for our automation. The user must b
 
 As the *root* user, create a new file under `/etc/sudoers.d`:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [root@node1 ~]$ visudo -f /etc/sudoers.d/automation
 ```
 
@@ -90,7 +86,7 @@ ansible ALL=(ALL) NOPASSWD:ALL
 
 We can check if the `ansible` user has the required permissions:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [root@node1 ~]# sudo -l -U ansible
 Matching Defaults entries for ansible on node1:
     !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES",
@@ -102,7 +98,7 @@ User ansible may run the following commands on node1:
 
 Log out of *node1* (ensure that you are back on your ansible master node *ansible-1*, run `exit` twice) and try to log in to *node1* with the *ansible* user:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ssh ansible@node1
 [ansible@node1 ~]$
 ```
@@ -115,7 +111,7 @@ Log out of *node1* (ensure that you are back on your ansible master node *ansibl
 
 Once you can reach all managed nodes password-less (and sudo-permissions are set, you will need this later), we can start to do some Ansible stuff like executing this Ad-hoc command:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible web -m ping
 ```
 
@@ -140,7 +136,7 @@ ansible-1 ansible_host=44.55.66.77
 
 All hosts in the *web* group will now use the *ansible* user for the SSH connection. Try with the ad hoc command again:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible web -m ping
 node2 | SUCCESS => {
     "ansible_facts": {
@@ -169,7 +165,7 @@ Success! All three nodes are reachable, we get a *pong* back, we proved that we 
 
 Try to run the same ad hoc command against the *control* group.  
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible control -m ping
 ```
 
@@ -190,7 +186,7 @@ ansible-1 ansible_host=44.55.66.77 ansible_connection=local
 
 With `ansible_connection=local` (on host-level) Ansible uses the **local** Python interpreter, which is fine for our Ansible master node. Now the ad hoc command succeeds:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible control -m ping
 ansible-1 | SUCCESS => {
     "ansible_facts": {
@@ -220,7 +216,7 @@ Create a new user "testuser" on `node1` and `node3` with a comment using an ad h
 
     Your commands could look like these:
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-doc -l | grep -i user
     [student@ansible-1 ansible_files]$ ansible-doc user
     [student@ansible-1 ansible_files]$ ansible node1,node3 -m user -a "name=testuser comment='Test D User'" -b
@@ -295,7 +291,7 @@ Instead of editing and copying `httpd.conf` why don’t you just define a variab
 
     First run the playbook itself, then run curl against `node1` with port `8080` and `node2` with port `80`.
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook apache_config_tpl.yml
     [...]
     [student@ansible-1 ansible_files]$ curl http://18.195.235.231:8080

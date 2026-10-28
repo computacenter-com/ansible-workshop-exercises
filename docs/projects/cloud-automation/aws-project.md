@@ -1,10 +1,4 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-projects-cover.html.j2
----
-
-# Project - AWS Automation
+# AWS Automation
 
 Automating Cloud infrastructure is getting more and more important. Tools like *Terraform* are well suited for provisioning infrastructure in public cloud environments.  
 When dealing with immutable infrastructure, Terraform works well and is great at provisioning cloud resources and applications for AWS, Azure, Docker, GCP, and others.  However, there is more to IT operations than automated infrastructure provisioning and this is why Ansible is extremely popular as well.
@@ -22,7 +16,7 @@ Behind the scenes, however, cloud modules use a different methodology than the o
 ## Requirements
 
 For doing the following exercises, you will need an AWS Account and an AWS Access key (consists of an *Access Key ID* and a *Secret Access Key*).  
-![AWS Security credentials](AWS-Security-Credentials.png){ align=left width="300"}
+![AWS Security credentials](images/AWS-Security-Credentials.png){ align=left width="250" .off-glb loading=lazy }
 After creating your AWS Account, go to the navigation bar on the upper right, choose your user name, and then choose *Security credentials*.  
 In the Access keys section, choose Create access key.  On the Access key best practices & alternatives page, choose your use case to learn about additional options which can help you avoid creating a long-term access key. Mark the checkbox and click *Create Access Key*. On the *Retrieve access keys* page, choose either Show to reveal the value of your user's secret access key, or Download .csv file. This is your only opportunity to save your secret access key. After you've saved your secret access key in a secure location, choose Done.
 
@@ -37,7 +31,7 @@ The following steps explain and train you how to use the modules and inventory s
 
 Today, you will need additional Ansible modules. In the first part of the workshop, we only used a handful of modules which are all included in the `ansible-core` binary. With *ansible-core* only 69 of the most used modules are included:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-doc -l
 add_host               Add a host (and alternatively a group) to the ansible-playbook in-memory inventory  
 apt                    Manages apt-packages  
@@ -54,7 +48,7 @@ copy                   Copy files to remote locations
 
 Additional modules are installed through *collections*, search the [Collection Index](https://docs.ansible.com/ansible/latest/collections/index.html){:target="_blank"} in the Ansible documentation for a suitable collection or use the search field.
 
-![Ansible documentation](ansible-docs.png)
+![Ansible documentation](images/ansible-docs.png){ loading=lazy }
 
 Once you found the appropriate collection, install it with the `ansible-galaxy` CLI command:
 
@@ -73,7 +67,7 @@ pip3.9 install boto3 --user
     Your Ansible control node might have multiple Python versions installed, install necessary dependencies for the Python version that Ansible uses.  
     You can check for the Python interpreter of Ansible with the `ansible --version` command:
 
-    ``` { .console .hl_lines="8" .no-copy }
+    ``` { .ansible-output .hl_lines="8" .no-copy }
     [student@ansible-1 ~]$ ansible --version
     ansible [core 2.14.0]
     config file = /etc/ansible/ansible.cfg
@@ -95,7 +89,7 @@ Achieve the following tasks:
 
 You can view the installed collections with this command:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 aci-automation]$ ansible-galaxy collection list
 # /home/student1/.ansible/collections/ansible_collections
 Collection        Version
@@ -111,7 +105,7 @@ community.general 5.3.0
 
 Create a new project folder in your home directory:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ mkdir aws-automation
 ```
 
@@ -287,7 +281,7 @@ Achieve the following task:
 Find a module to gather information about your EC2 instances in your region, use the filter `"tag:Name": workshop-instance1` to only get this single instance.  
 Store the output of the module into a variable and use the variable in another task which *debugs* only the *public DNS name* of your previously created EC2 instance.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 TASK [Output public DNS name of workshop-instance1] ****************************************************************************************************************
 ok: [localhost] =>
   msg: ec2-3-70-238-39.eu-central-1.compute.amazonaws.com
@@ -295,7 +289,7 @@ ok: [localhost] =>
 
 Copy the output of your task and login to your EC2 instance with SSH. Provide the *private* key and use the user `ec2-user`, for example:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ssh -i ~/.ssh/workshop ec2-user@ec2-3-70-238-39.eu-central-1.compute.amazonaws.com
 Last login: Sat Feb 11 13:27:56 2023 from ec2-3-71-15-149.eu-central-1.compute.amazonaws.com
 
@@ -347,7 +341,7 @@ Create a file `workshop.aws_ec2.yml`
 The inventory should have two additional groups `test_stage` and `prod_stage`. The hosts have a tag `Environment` with either `Testing` or `Production`, ensure that they are part of the correct group.  
 You can test your inventory with the `ansible-inventory` CLI utility, it outputs a JSON representation of how Ansible sees your provided inventory.
 
-``` { .console .hl_lines="9 10 21 26" .no-copy }
+``` { .ansible-output .hl_lines="9 10 21 26" .no-copy }
 [student@ansible-1 aws-automation]$ ansible-inventory -i demo.aws_ec2.yml --list
 {
     "_meta": {
@@ -395,7 +389,7 @@ When you finished your inventory, use this playbook to test the connection:
 
 Running the playbook (and providing the inventory!) results in the following output:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 aws-automation]$ ansible-playbook -i workshop.aws_ec2.yml test.yml
 
 PLAY [Playbook targeting hosts from dynamic inventory] ***************************************************************************************************************

@@ -1,9 +1,3 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-advanced-cover.html.j2
----
-
 # Ansible Navigator
 
 ## Objective
@@ -103,7 +97,7 @@ To reference all the inventory hosts, you supply a pattern to the `ansible-navig
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ~]$ ansible-navigator inventory --list -m stdout
     {
         "_meta": {
@@ -146,7 +140,7 @@ To reference all the inventory hosts, you supply a pattern to the `ansible-navig
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ~]$ ansible-inventory --list
     {
         "_meta": {
@@ -193,7 +187,7 @@ If the `--list` is too verbose, the option of `--graph` can be used to provide a
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ~]$ ansible-navigator inventory --graph -m stdout
     @all:
     |--@control:
@@ -207,7 +201,7 @@ If the `--list` is too verbose, the option of `--graph` can be used to provide a
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ~]$ ansible-inventory --graph
     @all:
     |--@control:
@@ -226,7 +220,7 @@ An inventory file can contain a lot more information, it can organize your hosts
 
 Using the `ansible-navigator inventory` command, we can also run commands that provide information only for one host or group. For example, give the following commands a try to see their output.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-navigator inventory --graph web -m stdout
 [student@ansible-1 ~]$ ansible-navigator inventory --graph control -m stdout
 [student@ansible-1 ~]$ ansible-navigator inventory --host node1 -m stdout
@@ -243,7 +237,7 @@ Ansible Automation Platform comes with multiple supported Execution Environments
 ansible-navigator
 ```
 
-![picture of ansible-navigator](images/interactive-mode.png)
+![picture of ansible-navigator](images/interactive-mode.png){ loading=lazy }
 
 !!! tip
     In `ansible-navigator` exit by pressing the button `ESC`.
@@ -254,7 +248,7 @@ First browse a collection by typing `:collections`
 :collections
 ```
 
-![picture of ansible-navigator](images/interactive-collections.png)
+![picture of ansible-navigator](images/interactive-collections.png){ loading=lazy }
 
 To browse the content for a specific collections, type the corresponding number.  For example in the example screenshot above the number `0` corresponds to `amazon.aws` collection.  To zoom into collection type the number `0`.
 
@@ -262,7 +256,7 @@ To browse the content for a specific collections, type the corresponding number.
 0
 ```
 
-![picture of ansible-navigator](images/interactive-aws.png)
+![picture of ansible-navigator](images/interactive-aws.png){ loading=lazy }
 
 Get help for a specific module including usage by zooming in further.  For example the module `ec2_tag` corresponds to `24`.
 
@@ -272,7 +266,7 @@ Get help for a specific module including usage by zooming in further.  For examp
 
 Scrolling down using the arrow keys or page-up and page-down can show us documentation and examples.
 
-![picture of ansible-navigator](images/interactive-ec2-tag.png)
+![picture of ansible-navigator](images/interactive-ec2-tag.png){ loading=lazy }
 
 You can also skip directly to a particular module by simply typing `:doc namespace.collection.module-name`.  For example typing `:doc amazon.aws.ec2_tag` would skip directly to the final page shown above.
 
@@ -287,24 +281,24 @@ Run the `ansible-navigator` command with the `images` argument to look at execut
 ansible-navigator images
 ```
 
-![ansible-navigator images](images/navigator-images.png)
+![ansible-navigator images](images/navigator-images.png){ loading=lazy }
 
 !!! note
     The output  you see might differ from the above output
 
 This command gives you information about all currently installed Execution Environments or EEs for short.  Investigate an EE by pressing the corresponding number.  For example pressing **2** with the above example will open the `ee-supported-rhel8` execution environment:
 
-![ee main menu](images/navigator-ee-menu.png)
+![ee main menu](images/navigator-ee-menu.png){ loading=lazy }
 
 Selecting `2` for `Ansible version and collections` will show us all Ansible Collections installed on that particular EE, and the version of `ansible-core`:
 
-![ee info](images/navigator-ee-collections.png)
+![ee info](images/navigator-ee-collections.png){ loading=lazy }
 
 ### Step 4 - Examining the ansible-navigator configuration
 
 Either use Visual Studio Code to open or use the `cat` command to view the contents of the `ansible-navigator.yml` file.  The file is located in the home directory:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 $ cat ~/.ansible-navigator.yml
 ---
 ansible-navigator:
@@ -347,7 +341,7 @@ Create a simple playbook:
 
 To run your playbook, use the `ansible-navigator run <playbook>` command as follows:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ ansible-navigator run apache.yml
 ```
 
@@ -356,7 +350,7 @@ To run your playbook, use the `ansible-navigator run <playbook>` command as foll
 
 When running the playbook, you'll be displayed a text user interface (TUI) that displays the play name among other information about the playbook that is currently run.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
   PLAY NAME                        OK  CHANGED    UNREACHABLE      FAILED    SKIPPED    IGNORED    IN PROGRESS     TASK COUNT          PROGRESS
 0│Apache server installed           2        1              0           0          0          0              0              2          COMPLETE
 ```
@@ -365,7 +359,7 @@ If you notice, prior to the play name `Apache server installed`, you'll see a `0
 
 The display should look something like this:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
   RESULT   HOST    NUMBER   CHANGED   TASK                              TASK ACTION    DURATION
 0│OK       node1   0        False     Gathering Facts                   gather_facts   1s
 1│OK       node1   1        False     latest Apache version installed   package            4s
@@ -382,7 +376,7 @@ Once you've completed, reviewing your Ansible playbook, you can exit out of the 
 
 Once the playbook has completed, connect to `node1` via SSH to make sure Apache has been installed. You may also skip this, as you did this yesterday.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ ssh node1
 Last login: Wed May 15 14:03:45 2019 from 44.55.66.77
 Managed by Ansible
@@ -390,7 +384,7 @@ Managed by Ansible
 
 Use the command `rpm -qi httpd` to verify httpd is installed:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [ec2-user@node1 ~]$ rpm -qi httpd
 Name        : httpd
 Version     : 2.4.37
@@ -416,11 +410,11 @@ Log out of `node1` with the command `exit` so that you are back on the control h
         msg: "{{ package }} in Version {{ ansible_facts.packages[package][0].version }} is installed!"
 ```
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-navigator run package.yml -m stdout
 ```
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 PLAY [Check packages] **********************************************************
 TASK [Gathering Facts] *********************************************************
 ok: [ansible]
@@ -453,7 +447,7 @@ Check that the tasks were executed correctly and Apache is accepting connections
 !!! warning
     **Expect a lot of red lines and a 403 status\!**
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-navigator run check_httpd.yml -m stdout
 ```
 
@@ -461,7 +455,7 @@ There are a lot of red lines and an error: As long as there is not at least an `
 
 So why not use Ansible to deploy a simple `web.html` file? On the ansible control host, as the `student` user, create the directory `files` to hold file resources in `~/ansible_files/`:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ mkdir files
 ```
 
@@ -505,7 +499,7 @@ What does this new copy task do? The new task uses the `copy` module and defines
 
 Run your extended Playbook:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ ansible-navigator run apache.yml -m stdout
 ```
 
@@ -556,7 +550,7 @@ Change the playbook `hosts` parameter to point to `web` instead of `node1`:
 
 Now run the playbook:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ ansible-navigator run apache.yml -m stdout
 ```
 

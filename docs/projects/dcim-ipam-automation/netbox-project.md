@@ -1,22 +1,16 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-projects-cover.html.j2
----
-
-# Project - DCIM Automation
+# Netbox Automation
 
 **D**ata**c**enter **I**nventory **M**anagement and IP Address Management are indispensable in today's large data centers. NetBox offers both functions including a versatile API.
 
 <figure markdown>
-  ![Netbox logo](netbox-logo.png){ .off-glb }
+  ![Netbox logo](images/netbox-logo.png){ .off-glb loading=lazy }
   <figcaption></figcaption>
 </figure>
 
 NetBox has curated a data model which caters specifically to the needs of network engineers and operators. It delivers a wide assortment of object types to best serve the needs of infrastructure design and documentation. These cover all facets of network technology, from IP address managements to cabling to overlays and more.
 
 <figure markdown>
-  ![Netbox UI overview](netbox-ui.png){ width="500" }
+  ![Netbox UI overview](images/netbox-ui.png){ width="500" loading=lazy }
   <figcaption></figcaption>
 </figure>
 
@@ -56,7 +50,7 @@ Create a new project folder in your home directory:
 !!! tip inline end
     **Open the folder in VScode via `File` > `Open Folder ...`**
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ mkdir netbox_automation
 ```
 
@@ -76,7 +70,7 @@ To automate Netbox, you'll need additional Ansible modules. In the first part of
 
 ??? example "Example output"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ~]$ ansible-doc -l
     add_host               Add a host (and alternatively a group) to the ansible-playbook in-memory inventory  
     apt                    Manages apt-packages  
@@ -93,11 +87,14 @@ To automate Netbox, you'll need additional Ansible modules. In the first part of
 
 Additional modules are installed through *collections*, search the [Collection Index](https://docs.ansible.com/ansible/latest/collections/index.html){:target="_blank"} for a **Provider** and **Collection** which can be used to automate Netbox or use the search field in the documentation.
 
-![Ansible documentation](ansible-docs.png)
+<figure markdown="span">
+  ![Ansible documentation](images/ansible-docs.png){ width=80% loading=lazy }
+  <figcaption></figcaption>
+</figure>
 
 If, for example, you want to create an EC2 instance in AWS, you will need the module `amazon.aws.ec2_instance`. To get the module, you'll need the collection `aws` of the provider `amazon`. Download the collection with the `ansible-galaxy` utility:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-galaxy collection install amazon.aws
 Starting galaxy collection install process
 Process install dependency map
@@ -116,7 +113,7 @@ You can view the installed collections with this command:
 ansible-galaxy collection list
 ```
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 netbox_automation]$ ansible-galaxy collection list
 # /home/student1/.ansible/collections/ansible_collections
 Collection        Version
@@ -142,7 +139,7 @@ ansible --version
 
 !!! example
 
-    ``` { .console hl_lines='8' .no-copy }
+    ``` { .ansible-output hl_lines='8' .no-copy }
     [student1@ansible-1 netbox_automation]$ ansible --version
     ansible [core 2.15.13]
     config file = /etc/ansible/ansible.cfg
@@ -400,12 +397,12 @@ Achieve the following tasks:
     In the Netbox UI, you now should see your VM cluster with multiple VMs, just like the following example. Go to [Virtualization > Cluster](https://demo.netbox.dev/virtualization/clusters){:target="_blank"} and choose your cluster.
 
     <figure markdown>
-    ![Netbox VM cluster overview](netbox-workshop-cluster-overview.png){ width="650" }
+    ![Netbox VM cluster overview](images/netbox-workshop-cluster-overview.png){ loading=lazy }
     <figcaption></figcaption>
     </figure>
 
     <figure markdown>
-    ![Netbox VMs of cluster](netbox-workshop-cluster-vms.png){ width="650" }
+    ![Netbox VMs of cluster](images/netbox-workshop-cluster-vms.png){ loading=lazy }
     <figcaption></figcaption>
     </figure>
 
