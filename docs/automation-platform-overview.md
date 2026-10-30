@@ -19,11 +19,49 @@ You will complete the following exercises today:
 
 Here are some additional information of the the Ansible Automation Platform:
 
-## What's New in Ansible automation controller 4.0
+## What is AAP?
 
-Ansible Automation Platform 2 is the next evolution in automation from Red Hat’s trusted enterprise technology experts. The Ansible Automation Platform 2 release includes automation controller 4.0, the improved and renamed Ansible Tower.
+Red Hat Ansible Automation Platform is an integrated solution for operationalizing Ansible across your team, organization, and enterprise. The platform includes a controller with a web console and REST API, analytics, Execution Environments, and much more.
+AAP gives you role-based access control, including control over the use of securely stored credentials for SSH and other services. You can sync your inventory with a wide variety of cloud sources, and powerful multi-playbook workflows allow you to model complex processes.
+It logs all of your jobs, integrates well with LDAP, SAML, and other authentication sources.  
 
-Controller continues to provide a standardized way to define, operate, and delegate automation across the enterprise. It introduces new technologies and an enhanced architecture that enables automation teams to scale and deliver automation rapidly.
+<div class="grid cards" markdown>
+<!-- markdownlint-disable MD030 -->
+*   **Automation administration**
+
+    ---
+
+    * Automation Controller
+    * Automation Hub
+    * Event-Driven Ansible
+    * Automation orchestrator
+
+*   **Automation creation**
+
+    ---
+
+    * Ansible plug-ins for Red Hat Developer Hub
+    * Ansible development tools & workspaces
+    * Automation execution environments
+    * Certified Ansible Content Collections
+
+*   **Business Tools & Analytics**
+
+    ---
+
+    * Automation dashboard and automation analytics
+    * Red Hat Insights
+
+*   **AI Features**
+
+    ---
+
+    * Automation coding assistant
+    * Automation intelligent assistant
+    * Red Hat Lightspeed for automation
+    * MCP Server Integration
+<!-- markdownlint-enable MD030 -->
+</div>
 
 ### Why was Ansible Tower renamed to automation controller?
 
