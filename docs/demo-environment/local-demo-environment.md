@@ -5,6 +5,7 @@ You can also do all exercises in a *local* development environment, if no Red Ha
 * Python 3.9+ (if you want to use the `ansible-navigator` Python 3.10+ is required!)
 
 The demo environment will *mimic* the Red Hat Demo Environment with three managed nodes: **node1**, **node2** and **node3**. The Ansible control node (your VM) will be known as **ansible-1** in the lab inventory. Instead of virtual machines, *Podman* containers are used as the *managed nodes*.  
+[](){ #local-demo-environment-lab-diagram }
 
 ## Lab Diagram
 

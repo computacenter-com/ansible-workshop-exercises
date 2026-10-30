@@ -106,7 +106,7 @@ Take a look at the [MkDocs Material documentation](https://squidfunk.github.io/m
 By default, every code block has a small *copy* button in the top-right corner, if your code block e.g. contains only example output from the shell or shows unwanted behavior, it should not by copyable. Disable the copy button **per** code block with `.no-copy`, the syntax is slightly different:
 
 ````markdown
-``` { .console .no-copy}
+``` { .ansible-output .no-copy}
 # Code block content
 ```
 ````

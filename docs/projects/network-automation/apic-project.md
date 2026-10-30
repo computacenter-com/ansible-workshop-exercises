@@ -1,10 +1,4 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-projects-cover.html.j2
----
-
-# Project - Network automation
+# Cisco ACI automation
 
 Although the (historical) focus of Ansible was Linux automation, it is very strong with automating network as well.  
 Ansible collections support a wide range of vendors, device types, and actions, so you can manage your entire network with a single automation tool. With Ansible, you can:
@@ -34,7 +28,7 @@ You will execute automation tasks against the **Cisco ACI APIC.**
     The Cisco Application Policy Infrastructure Controller API enables applications to directly connect with a secure, shared, high-performance resource pool that includes network, compute, and storage capabilities.
 
     <figure markdown>
-      ![Cisco Application Centric Infrastructure Fabric Overview](aci-fabric-overview.png){ loading=lazy }
+      ![Cisco Application Centric Infrastructure Fabric Overview](images/aci-fabric-overview.png){ .off-glb loading=lazy }
       <figcaption></figcaption>
     </figure>
 
@@ -50,7 +44,7 @@ The overall goal of the project is:
 * [X] Use Ansible roles and vault-encrypted content
 
 <figure markdown>
-  ![APIC Management Information Tree](apic-tenants-and-objects.png){ loading=lazy }
+  ![APIC Management Information Tree](images/apic-tenants-and-objects.png){ width=70% loading=lazy }
   <figcaption></figcaption>
 </figure>
 
@@ -60,13 +54,13 @@ The overall goal of the project is:
 
 Create a new project folder in your home directory:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ mkdir aci-automation
 ```
 
 We will be using a Cisco ACI Sandbox available online.
 
-![Cisco APIC overview](apic-quickstart.png)
+![Cisco APIC overview](images/apic-quickstart.png){ loading=lazy }
 
 Open a new browser tab and go to [https://sandboxapicdc.cisco.com/#](https://sandboxapicdc.cisco.com/#){:target="_blank"}.
 
@@ -87,7 +81,7 @@ Password:
 
 Today, you might need additional Ansible modules. In the first part of the workshop, we only used a handful of modules which are all included in the `ansible-core` binary. With *ansible-core* only 69 of the most used modules are included:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-doc -l
 add_host               Add a host (and alternatively a group) to the ansible-playbook in-memory inventory  
 apt                    Manages apt-packages  
@@ -104,11 +98,11 @@ copy                   Copy files to remote locations
 
 Additional modules are installed through *collections*, search the [Collection Index](https://docs.ansible.com/ansible/latest/collections/index.html){:target="_blank"} in the Ansible documentation for a module or use the search field.
 
-![Ansible documentation](ansible-docs.png)
+![Ansible documentation](images/ansible-docs.png){ loading=lazy }
 
 If, for example, you want to create an EC2 instance in AWS, you will need the module `amazon.aws.ec2_instance`. To get the module, you'll need the collection `aws` of the provider `amazon`. Download the collection with the `ansible-galaxy` utility:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-galaxy collection install amazon.aws
 Starting galaxy collection install process
 Process install dependency map
@@ -128,7 +122,7 @@ Achieve the following tasks:
 
 You can view the installed collections with this command:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 aci-automation]$ ansible-galaxy collection list
 # /home/student1/.ansible/collections/ansible_collections
 Collection        Version
@@ -147,7 +141,7 @@ community.general 5.3.0
 
 Within your newly created project folder, create an inventory file and a playbook file (**the name of the files are up to you**).
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 aci-automation]$ touch inventory.ini
 [student@ansible-1 aci-automation]$ touch playbook.yml
 ```
@@ -178,7 +172,7 @@ You may encounter the following error messages:
 !!! failure
     Expect an error message complaining about certification verification:
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     Connection failed for https://sandboxapicdc.cisco.com/api/aaaLogin.json. Request failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1131)>
     ```
 
@@ -193,11 +187,11 @@ For a production environment this is obviously **not recommended**!
 !!! failure
     If you see one of the following error messages, ensure that the Sandbox is available:
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     Connection failed for https://sandboxapicdc.cisco.com/api/aaaLogin.json. Connection failure: The read operation timed out
     ```
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     Authentication failed: -1 Unable to parse output as JSON, see 'raw' output. Expecting value: line 1 column 1 (char 0)", "raw": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx/1.13.12</center>\r\n</body>\r\n</html>\r\n
     ```
 
@@ -213,7 +207,7 @@ The APIC manages the scalable ACI multi-tenant fabric. A *multi-tenant* environm
 
 The goal is to create a new tenant within the APIC controller with Ansible. The tenant should have a recognizable name e.g. `demo-tenant-<initials>`. Add the tenant description `Workshop tenant`.
 
-![Demo Tenant in APIC UI](apic-demo-tenant.png){ .on-glb }
+![Demo Tenant in APIC UI](images/apic-demo-tenant.png){ loading=lazy }
 
 Observe the tenant and it's annotation in the APIC UI.
 
@@ -287,7 +281,7 @@ Filters let you transform JSON data into YAML data, split a URL to extract the h
 
 Create a new role which utilizes an [Ansible ACI module](https://docs.ansible.com/ansible/latest/collections/cisco/aci/index.html){:target="_blank"} that can manage/query contract resources (*vz:BrCP*). Get all contracts of the **common** tenant and output a list with only the contract names.
 
-![Contracts of common tenant](apic-common-contracts.png)
+![Contracts of common tenant](images/apic-common-contracts.png){ loading=lazy }
 
 The *common* tenant has at least one contract (*default*).
 
@@ -452,7 +446,7 @@ The Ansible module you will be using returns a JSON output like the following:
 
     Your VScode editor shows where you are in the JSON file. You can see the path at the top of the file, with the cursor on the `name` key of the *default* contract, the path will look like this:
     <figure markdown="span">
-      ![VScode Editor with JSON path](vscode-editor-json-path.png)
+      ![VScode Editor with JSON path](images/vscode-editor-json-path.png){ .off-glb loading=lazy }
     </figure>
 
 Observing the output above, you can see that multiple list objects are within the complete JSON object. The value of the *key* `current` is a list, every list item of this key is a tenant (with multiple *key-value* pairs which can also be dictionaries or lists).  
@@ -460,7 +454,7 @@ If you filter for a single tenant (by providing the tenant name) when using the 
 
 The resulting output in your playbook-run should look something like this (considering that the *common* tenant only has one contract):
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 TASK [aci-contract : Output list of contract names of Tenant 'common'] ********
 ok: [demo-aci-host] => {
     "msg": [
@@ -472,7 +466,7 @@ ok: [demo-aci-host] => {
 !!! tip
     There are multiple ways to achieve the desired solution, try around!  
     Dealing with large JSON objects and outputting it to stdout may result in not being able to scroll back far enough in your VScode terminal to see the start of your task or playbook.  
-    You can adjust the [VScode configuration](red-hat-demo-environment.md#terminal-scrollback) yourself.
+    You can adjust the [VScode configuration][terminal-scrollback] yourself.
 
 Achieve the following tasks:
 

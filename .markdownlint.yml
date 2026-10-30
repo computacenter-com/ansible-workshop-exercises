@@ -17,6 +17,9 @@ MD033:
 # MD038/no-space-in-code - Spaces inside code span elements
 MD038: false
 
+# MD042/no-empty-links No empty links
+MD042: false
+
 # MD046/code-block-style - Code block style
 MD046: false
 

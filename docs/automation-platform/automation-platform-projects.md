@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-aap-cover.html.j2
----
-
 # 3 - Projects & Job Templates
+
+[](){ #aap-projects }
 
 ## Objective
 
@@ -90,7 +86,7 @@ To configure and use this repository as a **Source Control Management (SCM)** sy
 The new project will be synced automatically after creation, wait for the **Success** state in *Last job status.  
 You can also do this manually: Sync the Project again with the Git repository by going to the **Projects** view and clicking the circular arrow **Sync Project** icon in the top right corner.
 
-![Project Sync](images/project_sync.png)
+![Project Sync](images/project_sync.png){ loading=lazy }
 
 After starting the sync job, go to the **Jobs** view: there is a new job (from type *Source control update*) for the the Git repository.
 
@@ -128,10 +124,10 @@ Okay, let’s just do that: To create a Job Template, go to the **Automation Exe
 You can start the job by directly clicking the blue **Launch template** button, or by clicking on the rocket in the Job Templates overview. After launching the Job Template, you are automatically brought to the job overview where you can follow the playbook execution in real time.
 
 Job Details
-![job details](images/template_details.png)
+![job details](images/template_details.png){ loading=lazy }
 
 Job Run
-![job_run](images/job_run.png)
+![job_run](images/job_run.png){ loading=lazy }
 
 Since this might take some time, have a closer look at all the details provided:
 
@@ -149,7 +145,7 @@ After the Job has finished go to the main **Jobs** view: All jobs are listed her
 
 Time for a little challenge:
 
-* [X] Use the playbook `check_httpd_service.yml` from the Github Repository `https://github.com/TimGrt/workshop-demo.git` to check the state of the webserver on all `web` hosts.
+* [x] Use the playbook `check_httpd_service.yml` from the Github Repository `https://github.com/TimGrt/workshop-demo.git` to check the state of the webserver on all `web` hosts.
 
 You have already been through all the steps needed, so try this for yourself.
 

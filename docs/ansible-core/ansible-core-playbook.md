@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-core-cover.html.j2
----
-
 # 3 - Writing your first Playbook
+
+[](){ #ansible-core-playbook }
 
 ## Objective
 
@@ -67,12 +63,12 @@ Instead, we are going to create a very simple directory structure for our playbo
 
 If you haven't done this already, on your control host **ansible-1**, create a directory called `ansible_files` in your home directory and change directories into it:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ mkdir ansible_files
 [student@ansible-1 ~]$ cd ansible_files/
 ```
 
-Add a file called `apache.yml` with the following content. As discussed in the previous exercises, use `vi`/`vim` or, if you are new to editors on the command line, check out the [editor alternatives](editor-alternatives.md) again.
+Add a file called `apache.yml` with the following content. As discussed in the previous exercises, use `vi`/`vim` or, if you are new to editors on the command line, check out the [editor alternatives][editor-alternatives] again.
 
 ```yaml
 ---
@@ -118,7 +114,7 @@ To run your playbook, use the `ansible-playbook <playbook>` command as follows:
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook apache.yml
     ```
 
@@ -126,7 +122,7 @@ To run your playbook, use the `ansible-playbook <playbook>` command as follows:
 
         When you encounter this error, **that is not your fault**, the default `ansible.cfg` references an invalid (old and superseded) plugin. If you want to know where the configuration file is stored, take a look at the following tip.
 
-        The `ansible.cfg` was created in an [earlier exercise](ansible-core-basics.md/#step-1-check-and-create-ansible-configuration), basically, you'll need to create a new/personal one right next to your playbook with at least the following content:
+        The `ansible.cfg` was created in an [earlier exercise][step-1-check-and-create-ansible-configuration], basically, you'll need to create a new/personal one right next to your playbook with at least the following content:
 
         ```ini
         [defaults]
@@ -136,7 +132,7 @@ To run your playbook, use the `ansible-playbook <playbook>` command as follows:
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run apache.yml -m stdout
     ```
 
@@ -151,7 +147,7 @@ To run your playbook, use the `ansible-playbook <playbook>` command as follows:
 
 Once the playbook has completed, connect to `node1` via SSH to make sure Apache has been installed:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ ssh node1
 Last login: Wed May 15 14:03:45 2019 from 44.55.66.77
 Managed by Ansible
@@ -159,7 +155,7 @@ Managed by Ansible
 
 Use the command `rpm -qi httpd` to verify httpd is installed:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [ec2-user@node1 ~]$ rpm -qi httpd
 Name        : httpd
 Version     : 2.4.37
@@ -180,19 +176,19 @@ The second task uses the `debug` module. The variable *ansible_facts* is extende
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook package.yml
     ```
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run package.yml -m stdout
     ```
 
 The output should look like this:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 
 PLAY [Check packages] **********************************************************
 
@@ -233,19 +229,19 @@ Thus with the second task we make sure the Apache server is indeed running on th
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook apache.yml
     ```
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run apache.yml -m stdout
     ```
 
     You may also run the playbook in *interactive* mode:
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run apache.yml -m interactive
     ```
 
@@ -261,13 +257,13 @@ Thus with the second task we make sure the Apache server is indeed running on th
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook service_state.yml
     ```
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run service_state.yml -m stdout
     ```
 
@@ -283,18 +279,18 @@ Check that the tasks were executed correctly and Apache is accepting connections
 
 !!! warning
     **Expect a lot of red lines and a 403 status\!**  
-    If you are using the [local development environment](local-demo-environment.md#lab-diagram), remember, you are using containers instead of actual VMs! You need to **append the correct port** (e.g. `node: "node1:8002"`).  
+    If you are using the [local development environment][local-demo-environment-lab-diagram], remember, you are using containers instead of actual VMs! You need to **append the correct port** (e.g. `node: "node1:8002"`).  
     Take a look at the table with the ports overview or execute `podman ps` and check the output.
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook check_httpd.yml
     ```
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run check_httpd.yml -m stdout
     ```
 
@@ -302,7 +298,7 @@ There are a lot of red lines and an error: As long as there is not at least an `
 
 So why not use Ansible to deploy a simple `index.html` file? On the ansible control host, as the `student` user, create the directory `files` to hold file resources in `~/ansible_files/`:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ mkdir files
 ```
 
@@ -328,13 +324,13 @@ Run your extended Playbook:
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook apache.yml
     ```
 
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run apache.yml -m stdout
     ```
 
@@ -367,12 +363,12 @@ Now run the playbook:
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-playbook apache.yml
     ```
 === "Navigator"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ansible-navigator run apache.yml -m stdout
     ```
 

@@ -1,11 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-core-cover.html.j2
-glightbox: false
----
-
 # 1 - Check the Prerequisites
+
+[](){ #ansible-core-intro }
 
 ## Objective
 
@@ -26,7 +21,7 @@ Still, although we will be using the *ansible-core* executable in all exercises,
 
 === "Ansible"
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ~]$ ansible-playbook --help
     usage: ansible-playbook [-h] [--version] [-v] [--private-key PRIVATE_KEY_FILE] [-u REMOTE_USER] [-c CONNECTION] [-T TIMEOUT] [--ssh-common-args SSH_COMMON_ARGS]
                             [--sftp-extra-args SFTP_EXTRA_ARGS] [--scp-extra-args SCP_EXTRA_ARGS] [--ssh-extra-args SSH_EXTRA_ARGS]
@@ -52,7 +47,7 @@ Still, although we will be using the *ansible-core* executable in all exercises,
         By default, the *ansible-navigator* will start in the *interactive* mode. This will launch the navigator in the *Text-based User Interface* (TUI) mode.  
         If you want to use the tool the same way as with the normal *ansible-playbook* command, provide the parameter `-m stdout` which forces the output to the command-line (though, this prevents you from experiencing the cool features of the navigator).
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ~]$ ansible-navigator --help
     usage: ansible-navigator [-h] [--version] [--rad ANSIBLE_RUNNER_ARTIFACT_DIR] [--rac ANSIBLE_RUNNER_ROTATE_ARTIFACTS_COUNT] [--rt ANSIBLE_RUNNER_TIMEOUT]
                             [--cdcp COLLECTION_DOC_CACHE_PATH] [--ce CONTAINER_ENGINE] [--co CONTAINER_OPTIONS [CONTAINER_OPTIONS ...]] [--dc DISPLAY_COLOR] [--ecmd EDITOR_COMMAND]
@@ -88,25 +83,25 @@ Every host is reachable via SSH.
 
 Connect to Visual Studio Code from the Workshop launch page (provided by your instructor).  The password is provided below the WebUI link.
 
-  ![launch page](images/launch_page.png)
+  ![launch page](images/launch_page.png){ loading=lazy }
 
 Type in the provided password to connect.
 
-  ![login vs code](images/vscode_login.png)
+  ![login vs code](images/vscode_login.png){ loading=lazy }
 
 In the menu bar of VS Code, click on `File` &#8594; `Open Folder...` and open your *home directory* in Visual Studio Code (this folder should already be shown in the *Open Folder* pop-up and called `/home/student`. This will reload your browser window.
 
-  ![open folder vs code](images/vscode_open_folder.png)
+  ![open folder vs code](images/vscode_open_folder.png){ loading=lazy }
 
 ### Step 2 - Using the Terminal
 
 Open a terminal in Visual Studio Code:
 
-  ![picture of new terminal](images/vscode_new_terminal.png)
+  ![picture of new terminal](images/vscode_new_terminal.png){ loading=lazy }
 
 Navigate to the `lab_inventory` directory on the Ansible control node terminal.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ cd lab_inventory
 [student@ansible-1 lab_inventory]$ pwd
 /home/student1/lab_inventory

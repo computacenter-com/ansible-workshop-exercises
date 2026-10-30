@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-core-cover.html.j2
----
-
 # 5 - Work with conditionals
+
+[](){ #ansible-core-conditionals }
 
 ## Objective
 
@@ -59,7 +55,7 @@ Next create the file `ftpserver.yml` on your control host in the `~/ansible_file
 
 Run it and examine the output. The expected outcome: The task is skipped on node1, node3 and the ansible host (your control host) because they are not in the ftpserver group in your inventory file.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 TASK [Install FTP server when host in ftpserver group] *******************************************
 skipping: [ansible-1]
 skipping: [node1]
@@ -122,7 +118,7 @@ Run the extended playbook.
 
     Running the playbook outputs the following:
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     ...
     TASK [Output message when vsftp version is greater than 3.0] *******************************************************************
     skipping: [node1]

@@ -10,7 +10,7 @@ COLOUR_YELLOW:=$(shell tput setaf 3)
 COLOUR_BLUE:=$(shell tput setaf 4)
 COLOUR_END:=$(shell tput sgr0)
 
-VENV_NAME?=ve-mkdocs-dev
+VENV_NAME?=ve-docs-dev
 PYTHON=${VENV_NAME}/bin/python
 
 help:  ## Display this help
@@ -23,27 +23,28 @@ venv: $(VENV_NAME)/bin/activate  ## Creates Python virtual environment
 
 $(VENV_NAME)/bin/activate: requirements.txt
 	$(info $(COLOUR_BLUE)## Creating Python virtual environment and installing dependencies...$(COLOUR_END))
-	@test -d $(VENV_NAME) || (python3 -m venv $(VENV_NAME) && echo -e "$(COLOUR_GREEN)##Python VE created.$(COLOUR_END)")
+	@test -d $(VENV_NAME) || (python3 -m venv $(VENV_NAME) && echo -e "$(COLOUR_GREEN)## Python VE created.$(COLOUR_END)")
 	@${PYTHON} -m pip install -r requirements.txt && echo -e "$(COLOUR_GREEN)## Python requirements installed.$(COLOUR_END)"
 	@${PYTHON} -m pip install prek && echo -e "$(COLOUR_GREEN)## prek package installed.$(COLOUR_END)"
 	@touch $(VENV_NAME)/bin/activate
 
 hooks: pre-commit-install ## Installs pre-commit hooks
-	$(info $(COLOUR_BLUE)## Pre-commit hooks (with prek) are ready.$(COLOUR_END))
+	$(info $(COLOUR_BLUE)## Pre-commit hooks (with prek) are ready. Run anytime with:$(COLOUR_END))
+	@echo -e "prek run -a"
 
 pre-commit-install:
 ifeq ("$(wildcard .git/hooks/pre-commit)","")
 	@${PYTHON} -m prek install && echo -e "$(COLOUR_GREEN)## Hooks installed.$(COLOUR_END)"
 endif
 
-serve:  ## Output instructions for running MkDocs development server
+serve:  ## Output instructions for running Zensical development server
 ifneq ($(shell pwd)/$(PYTHON), $(shell which python))
 	@echo -e "$(COLOUR_YELLOW)## Python VE is not activated!$(COLOUR_END)"
 	@echo -e "$(COLOUR_GREEN)## Run the following command: $(COLOUR_END)"
 	@echo -e "source $(VENV_NAME)/bin/activate"
 endif
-	@echo -e "$(COLOUR_GREEN)## Run the following command for a live preview (without PDF generation).$(COLOUR_END)"
-	@echo -e "MKDOCS_EXPORTER_PDF_ENABLED=false mkdocs serve --livereload"
+	@echo -e "$(COLOUR_GREEN)## Run the following command for a live preview.$(COLOUR_END)"
+	@echo -e "zensical serve"
 
 clean: ## Cleanup the project folders
 	$(info $(COLOUR_BLUE)## Cleaning up things...$(COLOUR_END))
@@ -51,5 +52,6 @@ ifeq ($(shell pwd)/$(PYTHON), $(shell which python))
 	$(error $(COLOUR_RED)## Cleanup aborted!$(COLOUR_YELLOW) Python VE is still activated! Leave the VE by running$(COLOUR_END) deactivate $(COLOUR_YELLOW)first$(COLOUR_END))
 endif
 	@rm -rf $(VENV_NAME) &&	echo -e "$(COLOUR_GREEN)## Python VE removed.$(COLOUR_END)"
+	@rm -rf site && rm -rf .cache && echo -e "$(COLOUR_GREEN)## Zensical build folder and cache removed.$(COLOUR_END)"
 	@rm -rf .git/hooks/pre-commit && echo -e "$(COLOUR_GREEN)## pre-commit hooks removed.$(COLOUR_END)"
-	@rm -rf ~/.cache/prek && echo -e "$(COLOUR_GREEN)## pre-commit/prek cache removed.$(COLOUR_END)"
+	@rm -rf ~/.cache/prek && rm -rf ~/.ansible && echo -e "$(COLOUR_GREEN)## pre-commit/prek and Ansible cache removed.$(COLOUR_END)"

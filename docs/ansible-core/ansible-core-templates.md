@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-core-cover.html.j2
----
-
 # 8 - Templating with Jinja2
+
+[](){ #ansible-core-templates }
 
 ## Objective
 
@@ -20,7 +16,7 @@ As an example of using templates you will change the motd file to contain host-s
 
 First create the directory `templates` to hold template resources in `~/ansible_files/`:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ansible_files]$ mkdir templates
 ```
 
@@ -93,7 +89,7 @@ Run the newly created playbook to find the fact name.
 
     With the wildcard in place, the output shows:
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
 
     TASK [debug] *******************************************************************
     ok: [node1] => {
@@ -123,19 +119,19 @@ Run the newly created playbook to find the fact name.
 
     === "Ansible"
 
-        ``` { .console .no-copy }
+        ``` { .ansible-output .no-copy }
         [student@ansible-1 ansible_files]$ ansible-playbook motd_facts.yml
         ```
 
     === "Navigator"
 
-        ``` { .console .no-copy }
+        ``` { .ansible-output .no-copy }
         [student@ansible-1 ansible_files]$ ansible-navigator run motd_facts.yml -m stdout
         ```
 
     Verify the new message via SSH login to `node1`.
 
-    ``` { .console .no-copy }
+    ``` { .ansible-output .no-copy }
     [student@ansible-1 ansible_files]$ ssh node1
     Welcome to node1.
     Host runs RedHat 8.1

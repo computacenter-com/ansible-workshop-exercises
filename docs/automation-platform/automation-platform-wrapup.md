@@ -1,10 +1,6 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-aap-cover.html.j2
----
-
 # 7 - AAP Wrap up
+
+[](){ #aap-wrapup }
 
 ## Objective
 
@@ -89,7 +85,7 @@ ansible_host: node2.example.com
 stage: prod
 ```
 
-![edit host](images/edit_host.png)
+![edit host](images/edit_host.png){ loading=lazy }
 
 ### Create the Template
 
@@ -110,7 +106,7 @@ Within **Automation Execution → Templates**, select the **Create template** bu
 
 Click **Create job template**.
 
-![web_content_job_template](images/web_content_job_template.png)
+![web_content_job_template](images/web_content_job_template.png){ loading=lazy }
 
 Run the template by clicking the **Launch** button.
 
@@ -127,13 +123,13 @@ This time we use the power of Ansible to check the results: execute uri to get t
 
 Execute the playbook:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-navigator run check_url.yml -m stdout
 ```
 
 Snippet of output:
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 TASK [debug] *******************************************************************
 ok: [node1] => {
     "uri_output.content": "<body>\n<h1>This is a development webserver, have fun!</h1>\ndev wweb</body>\n"
@@ -182,7 +178,7 @@ In the same fashion add a second **Survey Question**
 
 Check the results again from your automation controller host. We will use the dedicated `uri` module within an Ansible playbook. As arguments it needs the actual URL and a flag to output the body in the results.
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ ansible-navigator run check_url.yml -m stdout
 ```
 

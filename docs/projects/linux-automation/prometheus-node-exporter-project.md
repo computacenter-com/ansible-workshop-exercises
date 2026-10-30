@@ -1,17 +1,11 @@
----
-pdf: true
-covers:
-  front: ./docs/assets/pdf/ansible-projects-cover.html.j2
----
-
-# Project - Linux automation
+# Prometheus Node Exporter Deployment
 
 To further enhance your Ansible skills, let's **deploy the Prometheus Node exporter to all nodes in the demo environment**.  
 
 **Prometheus is a systems and service monitoring system.** It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.
 
 <figure markdown>
-  ![Prometheus Logo](prometheus-logo.png){ width=80% .off-glb }
+  ![Prometheus Logo](images/prometheus-logo.png){ width=70% .off-glb loading=lazy }
   <figcaption></figcaption>
 </figure>
 
@@ -68,7 +62,7 @@ The Prometheus Node Exporter installation basically follows [this guide](https:/
 
 Create a new project folder in your home directory and change into the directory
 
-``` { .console .no-copy }
+``` { .ansible-output .no-copy }
 [student@ansible-1 ~]$ mkdir prometheus_node_exporter
 ```
 
@@ -89,7 +83,7 @@ Take a look at the [Ansible inventory documentation](https://docs.ansible.com/pr
 
 For example, you may check your inventory with the `ansible-inventory` CLI utility:
 
-``` { .console .no-copy hl_lines='4 5 6 12' }
+``` { .ansible-output .no-copy hl_lines='4 5 6 12' }
 [student@ansible-1 ~]$ ansible-inventory --list --yaml
 all:
   children:
@@ -130,7 +124,7 @@ Achieve the following tasks:
 The latest Node Exporter release must be downloaded from the internet, **the download link can be obtained from the [Prometheus Download Page](https://prometheus.io/download/#node_exporter){:target="_blank"}**, right-click the tarball with `*linux-amd64.tar.gz` and choose copy link.
 
 <figure markdown>
-  ![Download Node Exporter tarball](prometheus-node-exporter-copy-link.png){ width=70% }
+  ![Download Node Exporter tarball](images/prometheus-node-exporter-copy-link.png){ width=70% loading=lazy }
   <figcaption></figcaption>
 </figure>
 
@@ -217,7 +211,7 @@ After transferring the service file and having the binary at the correct locatio
 
     If the Node Exporter was installed correctly and the service is running, you will receive output like the following:
 
-    ```{ .console .no-copy }
+    ```{ .ansible-output .no-copy }
     $ ansible prometheus_test -a "curl -s http://localhost:9100/metrics"
     node1 | CHANGED | rc=0 >>
     # HELP go_gc_duration_seconds A summary of the wall-time pause (stop-the-world) duration in garbage collection cycles.
