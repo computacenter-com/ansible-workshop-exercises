@@ -198,7 +198,7 @@ pip3 install ansible-core==2.16.18
 
 ??? example
 
-    When running `pip3 list` again, you'll see the installed Asible package and other dependencies:
+    When running `pip3 list` again, you'll see the installed Ansible package and other dependencies:
 
     ``` { .bash .no-copy }
     (ve-ansible-netbox) [student1@ansible-1 netbox_automation]$ pip3 list
@@ -319,10 +319,12 @@ The goal is to create a new Netbox tenant with Ansible. The tenant should have t
     Install the stated Python library with `pip3 install ...`.
 
 Achieve the following tasks:
-
+<div class="annotate" markdown>
 * [X] Tenant created
-* [X] Tenant is part of `CC Workshop` tenant group
-* [X] Inspect tenant in the UI
+* [X] Tenant is part of `CC Workshop` tenant group (1)
+</div>
+
+1. The Tenant group should already be created by your Trainer!
 
 ---
 
@@ -334,13 +336,17 @@ Find an appropriate module to create a cluster and set the following module para
 | Parameter     | Value                        |
 | ------------- | ---------------------------- |
 | name          | `Demo Tenant <Initials> VMs` |
-| site          | `RH Demo Environment`        |
+| scope_type    | `dcim.site`                  |
+| scope         | `RH Demo Environment`        |
 | cluster_type  | `Amazon Web Services`        |
 | cluster_group | `EMEA`                       |
 
 Achieve the following tasks:
+<div class="annotate" markdown>
+* [X] Cluster object created with scope `RH Demo Environment` (1)
+</div>
 
-* [X] Cluster object created
+1. The scope/site should already be created by your Trainer!
 
 ---
 
@@ -382,8 +388,26 @@ vars:
     Depending on your playbook/project structure you need to provide **multiple** inventory files, by either using multiple `-i` parameters when running the playbook or as a comma-separated string in the `inventory` key in the `defaults` section of your `ansible.cfg`.
 
 Achieve the following tasks:
-
+<div class="annotate" markdown>
 * [X] VM objects for all managed nodes created
+* [X] VM objects belong to own cluster and tenant, the site is `RH Demo Environment` (1)
+* [X] VM objects have hardware info (CPU, RAM, Storage)
+</div>
+
+1. The site should already be created by your Trainer!
+
+!!! success
+    In the Netbox UI, you now should see your VM cluster with multiple VMs, just like the following example. Go to [Virtualization > Cluster](https://demo.netbox.dev/virtualization/clusters){:target="_blank"} and choose your cluster.
+
+    <figure markdown>
+    ![Netbox VM cluster overview](netbox-workshop-cluster-overview.png){ width="650" }
+    <figcaption></figcaption>
+    </figure>
+
+    <figure markdown>
+    ![Netbox VMs of cluster](netbox-workshop-cluster-vms.png){ width="650" }
+    <figcaption></figcaption>
+    </figure>
 
 ---
 

@@ -18,7 +18,7 @@ You’ll start off by writing your first Ansible playbook, work on Jinja templat
 
 !!! tip "How to use the guide"
     The exercise guide contains loads of explanation for every topic, **don't just skip over everything** and only *copy-paste* the commands to *finish* the exercises. **Take your time!**  
-    Some tipps:
+    Some tips:
 
       * Every *code* block has a **small copy button** inside (**if the code block is meant to be copied!**)!
 

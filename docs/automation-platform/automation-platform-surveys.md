@@ -92,7 +92,7 @@ Now you create a new Template that includes a survey.
 
 ![Survey Q2](images/survey_q2.png)
 
-* Enable the survey by toggling the **Survey disabled** button to the **On** posiiton.
+* Enable the survey by toggling the **Survey disabled** button to the **On** position.
 
 ### Launch the Template
 

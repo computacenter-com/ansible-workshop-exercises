@@ -53,15 +53,27 @@ flowchart LR
     end
 ```
 
+The Prometheus Node Exporter installation basically follows [this guide](https://prometheus.io/docs/guides/node-exporter/#installing-and-running-the-node-exporter){:target="_blank"}:
+
+1. Download the Node Exporter tarball
+2. Extract/unarchive the tarball
+3. Copy `node_exporter` binary/executable to folder in `PATH`
+4. Create user for Node Exporter
+5. Create SystemD Service file for Node Exporter
+6. Start and enable Node exporter service
+
 ---
 
 ### Step 1 - Prepare project
 
-Create a new project folder in your home directory:
+Create a new project folder in your home directory and change into the directory
 
 ``` { .console .no-copy }
 [student@ansible-1 ~]$ mkdir prometheus_node_exporter
 ```
+
+!!! tip "Tip"
+    Open the folder in VScode to only show the necessary content in the VScode explorer view.
 
 Create a **new inventory file**, it should define multiple groups, one for the *test environment*, one for all hosts in the *prod environment* and a *parent* group which targets all hosts.
 
@@ -73,7 +85,7 @@ Create a **new inventory file**, it should define multiple groups, one for the *
 
 Take a look at the [Ansible inventory documentation](https://docs.ansible.com/projects/ansible/latest/inventory_guide/intro_inventory.html#how-to-build-your-inventory){:target="_blank"}, especially on how to create [parent/child group relationships](https://docs.ansible.com/projects/ansible/latest/inventory_guide/intro_inventory.html#grouping-groups-parent-child-group-relationship){:target="_blank"}.
 
-Create a new Ansible configuration file and instruct Ansible to always use the inventory you just created.
+**Create a new Ansible configuration file** and instruct Ansible to always use the inventory you just created.
 
 For example, you may check your inventory with the `ansible-inventory` CLI utility:
 
@@ -96,7 +108,7 @@ all:
 ```
 
 !!! info
-    As you can see, no inventory was provided in the CLI call (e.g. with `-i inventory`), but the correct inventory is used.
+    As you can see, no inventory was provided in the CLI call, but the correct inventory is used.
 
 Now, create a **new playbook file**, it should include a *play* which targets the `prometheus_test` group.
 
@@ -107,26 +119,18 @@ Now, create a **new playbook file**, it should include a *play* which targets th
 Achieve the following tasks:
 
 * [X] Inventory file created
-* [X] All necessary groups created and nodes in correct groups
-* [X] Configuration file created which sets the correct inventory source
-* [X] Playbook created which targets the *test environment*
+* [X] Inventory contains all necessary groups and nodes in correct groups
+* [X] Ansible Configuration file created which sets the correct inventory source
+* [X] Playbook created which targets the *test environment* `prometheus_test`
 
 ---
 
-### Step 2 - Download and extract Node exporter
+### Step 2 - Download and extract
 
-The Prometheus Node exporter installation basically follows [this guide](https://prometheus.io/docs/guides/node-exporter/#installing-and-running-the-node-exporter){:target="_blank"}:
-
-1. Download the Node Exporter tarball (find the latest version tag on the [releases page](https://github.com/prometheus/node_exporter/releases/latest){:target="_blank"})
-2. Extract/unarchive the tarball
-3. Run the binary (done in the next step).
-
-Add Ansible Tasks to achieve the first two steps.
-
-**The download link can be obtained from the [Prometheus Download Page](https://prometheus.io/download/#node_exporter){:target="_blank"}**, right-click the tarball with `*linux-amd64.tar.gz` and choose copy link.
+The latest Node Exporter release must be downloaded from the internet, **the download link can be obtained from the [Prometheus Download Page](https://prometheus.io/download/#node_exporter){:target="_blank"}**, right-click the tarball with `*linux-amd64.tar.gz` and choose copy link.
 
 <figure markdown>
-  ![Download Node exporter tarball](prometheus-node-exporter-copy-link.png){ width=70% }
+  ![Download Node Exporter tarball](prometheus-node-exporter-copy-link.png){ width=70% }
   <figcaption></figcaption>
 </figure>
 
@@ -142,7 +146,7 @@ total 22400
 
 1. This is the Node Exporter binary!
 
-As you can see, the tarball was extracted into a folder with the basename of the archive (in the example `node_exporter-1.10.2.linux-amd64`), inside are three files, with the `node_exporter` binary as the most important one.
+As you can see, the tarball was extracted into a folder with the basename of the archive (in the example `node_exporter-1.10.2.linux-amd64`), inside are three files, with the `node_exporter` binary as the most important one. **You will need this path later on.**
 
 Achieve the following tasks:
 
@@ -151,14 +155,22 @@ Achieve the following tasks:
 
 ---
 
-### Step 3 - Create Linux Service for Node exporter
+### Step 3 - Create user
 
 The Node Exporter should run as a Linux **SystemD** service under the user `prometheus_metrics`. **The username value should be provided as a variable**, define the variable at a location of your choice.  
 
 **Add a task that creates the user (using the variable)**, the user should not be able to login (shell should be set to `/sbin/nologin`), a home directory is also not necessary. Use the appropriate parameters of the module.
 
+Achieve the following tasks:
+
+* [X] User `prometheus_metrics` created **without** home directory and login shell
+
+---
+
+### Step 4 - Create service file
+
 The following (**incomplete**) service file is missing the *user* and *group* (the same as the value for the *user*).
-Use it as a *template* and add the missing variables. **The service file should be present at `/etc/systemd/system/node-exporter.service` on the managed node**, use an appropriate module to transfer the file to the managed node.
+Use it as a *template* and add the missing variables. The service file **must** be present at `/etc/systemd/system/node-exporter.service` on the managed node, **add a task which uses an appropriate module to transfer the file/template to the managed node.**
 
 ```{ .ini hl_lines='7 8' }
 [Unit]
@@ -169,52 +181,109 @@ After=network-online.target
 [Service]
 User=
 Group=
-# Fallback when environment file does not exist
-# Fallback when environment file does not exist
-Environment=OPTIONS=
-EnvironmentFile=-/etc/sysconfig/node_exporter
-ExecStart=/usr/local/bin/node_exporter
+ExecStart=/usr/local/bin/node_exporter # (1)!
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-The service file expects the binary at `/usr/local/bin/node_exporter` (see `ExecStart` parameter), **add a task which moves/copies the binary to the desired location. The binary must belong to the service user** (use the variable) **and be executable** (use `0755` permissions).  
+1. The binary which was inside the downloaded archive, copied to the path shown.
+
+!!! tip "Tip"
+    Managing/adjusting SystemD service files requires a *daemon-reload* every time a service unit file is changed!
+
+The service file expects the binary at `/usr/local/bin/node_exporter` (see `ExecStart` parameter), **add another task which moves/copies the binary to the desired location. The binary must belong to the service user** (use the variable) **and be executable** (use `0755` permissions).  
 Remember, the service file is already present on the managed node (you unarchived it earlier).
-
-After transferrring the service file and having the binary at the correct location, the systemd service itself must be started (and should be enabled at boot)! **Add an additional task to achieve this.**
-
-The Node Exporter exposes the metrics on Port 9100, you can check this by cURLing the `/metrics` endpoint. Run an ad-hoc command against the managed node with the argument `curl http://localhost:9100/metrics | grep node_`. The command uses a *pipe*, choose the correct module(!), the default module `command` does not support this!  
-Expect an output like this:
-
-```{ .console .no-copy }
-node1 | CHANGED | rc=0 >>
-# HELP node_arp_entries ARP entries by device
-# TYPE node_arp_entries gauge
-node_arp_entries{device="tap0"} 2
-# HELP node_boot_time_seconds Node boot time, in unixtime.
-# TYPE node_boot_time_seconds gauge
-node_boot_time_seconds 1.772612313e+09
-# HELP node_context_switches_total Total number of context switches.
-# TYPE node_context_switches_total counter
-node_context_switches_total 5.9358839e+07
-# HELP node_cooling_device_cur_state Current throttle state of the cooling device
-# TYPE node_cooling_device_cur_state gauge
-node_cooling_device_cur_state{name="0",type="Processor"} 0
-...
-```
 
 Achieve the following tasks:
 
-* [X] User created **without** home directory and login shell
-* [X] Service File present under `/etc/systemd/system/node-exporter.service`
-* [X] Node Exporter binary present under `/usr/local/bin`
-* [X] Playbook runs successful
-* [X] Node exporter service is running and exporting metrics
+* [X] Completed Service file transferred to managed node
+* [X] Node Exporter binary present at correct location
 
 ---
 
-### Step 4 - Re-format project to role structure
+### Step 5 - Start service
+
+After transferring the service file and having the binary at the correct location, the systemd service itself must be started (and should be enabled at boot)! **Add an additional task to achieve this.** The Node Exporter service is called `node-exporter`.
+
+!!! success "Test metrics export"
+
+    The Node Exporter exposes the metrics on Port 9100, you can check this by cURLing the `/metrics` endpoint.  
+    **Use the following *ad-hoc* command to check the successful export of metrics**:
+
+    ```bash
+    ansible prometheus_test -a "curl -s http://localhost:9100/metrics"
+    ```
+
+    If the Node Exporter was installed correctly and the service is running, you will receive output like the following:
+
+    ```{ .console .no-copy }
+    $ ansible prometheus_test -a "curl -s http://localhost:9100/metrics"
+    node1 | CHANGED | rc=0 >>
+    # HELP go_gc_duration_seconds A summary of the wall-time pause (stop-the-world) duration in garbage collection cycles.
+    # TYPE go_gc_duration_seconds summary
+    go_gc_duration_seconds{quantile="0"} 0
+    go_gc_duration_seconds{quantile="0.25"} 0
+    go_gc_duration_seconds{quantile="0.5"} 0
+    go_gc_duration_seconds{quantile="0.75"} 0
+    go_gc_duration_seconds{quantile="1"} 0
+    go_gc_duration_seconds_sum 0
+    go_gc_duration_seconds_count 0
+    ...
+    promhttp_metric_handler_requests_in_flight 1
+    # HELP promhttp_metric_handler_requests_total Total number of scrapes by HTTP status code.
+    # TYPE promhttp_metric_handler_requests_total counter
+    promhttp_metric_handler_requests_total{code="200"} 0
+    promhttp_metric_handler_requests_total{code="500"} 0
+    promhttp_metric_handler_requests_total{code="503"} 0
+    ```
+
+    ??? failure "non-zero return code"
+
+        A failed node exporter installation may look like this:
+
+        ```bash
+        $ ansible prometheus_test -a "curl -s http://localhost:9100/metrics"
+        node1 | FAILED | rc=7 >>
+        non-zero return code
+        ```
+
+        To troubleshooting/identify the problem, login to **node1** (the host in the `prometheus_test` group). The following commands may help you:
+
+        ```bash title="User created?"
+        getent passwd | grep prometheus_metrics
+        ```
+
+        ```bash title="Binary at the correct location? Permissions correct?"
+        ls -l /usr/local/bin/node_exporter
+        ```
+
+        ```bash title="Binary at the correct location? Permissions correct?"
+        stat -c '%F %a %n' /usr/local/bin/node_exporter
+        ```
+
+        Above command should show: `regular file 755 /usr/local/bin/node_exporter`
+
+        ```bash title="Service File correct? User correct? No unnecessary whitespaces?"
+        cat /etc/systemd/system/node-exporter.service
+        ```
+
+        ```bash title="Service state"
+        sudo systemctl status node-exporter
+        ```
+
+        ```bash title="View service logs"
+        sudo journalctl -xeu node-exporter
+        ```
+
+Achieve the following tasks:
+
+* [X] Node Exporter service is running and enabled at boot
+* [X] Metrics are exported
+
+---
+
+### Step 6 - Re-format project to role structure
 
 All Ansible projects should use the role structure, if your project does not already uses it, now is the time to rearrange your content.  
 Create a `roles` folder and an appropriately named sub-folder for the node exporter deployment with all necessary folder and files.  
@@ -245,12 +314,12 @@ Optional, but recommended:
 
 ---
 
-### Step 5 - Bonus: Upload project to Github
+### Step 7 - Optional: Upload project to Github
 
 Create a new project in your personal Github account and commit your Ansible project.
 
 ---
 
-### Step 6 - Bonus: Run your project within AAP
+### Step 8 - Optional: Run your project within AAP
 
 Create a new project in AAP, reference your node exporter project from Github as the code source. Create a template and run your playbook.

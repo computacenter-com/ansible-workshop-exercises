@@ -222,7 +222,7 @@ Naturally, you should achieve this with Ansible! Find an appropriate module (the
     Configuration changes require a service restart!
 
 !!! tip
-    Login to `node2` via ssh, take a look at the file. You can download the file from there, copy the content or just take a look at how it looks to be able to find the appropraiate lines to change, there are many ways to achieve the solution!
+    Login to `node2` via ssh, take a look at the file. You can download the file from there, copy the content or just take a look at how it looks to be able to find the appropriate lines to change, there are many ways to achieve the solution!
 
 </div>
 

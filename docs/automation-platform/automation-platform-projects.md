@@ -137,7 +137,7 @@ Since this might take some time, have a closer look at all the details provided:
 
 * All details of the job template like inventory, project, credentials and playbook are shown.
 
-* Additionally, the actual revision of the playbook is recorded here - this makes it easier to analyse job runs later on.
+* Additionally, the actual revision of the playbook is recorded here - this makes it easier to analyze job runs later on.
 
 * Also the time of execution with start and end time is recorded, giving you an idea of how long a job execution actually was.
 

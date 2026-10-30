@@ -52,4 +52,4 @@ ifeq ($(shell pwd)/$(PYTHON), $(shell which python))
 endif
 	@rm -rf $(VENV_NAME) &&	echo -e "$(COLOUR_GREEN)## Python VE removed.$(COLOUR_END)"
 	@rm -rf .git/hooks/pre-commit && echo -e "$(COLOUR_GREEN)## pre-commit hooks removed.$(COLOUR_END)"
-	@rm -rf ~/.cache/pre-commit && echo -e "$(COLOUR_GREEN)## pre-commit cache removed.$(COLOUR_END)"
+	@rm -rf ~/.cache/prek && echo -e "$(COLOUR_GREEN)## pre-commit/prek cache removed.$(COLOUR_END)"

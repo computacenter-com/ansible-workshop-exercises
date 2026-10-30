@@ -161,7 +161,7 @@ Previously, we used the generic `package` module to install packages on the targ
 * In the web UI go to **Settings → Job**.
 * In this **Jobs settings** windows, click the **Edit** button in the top right.
 
-* In the text area *Ansible Modules Allowed for Ad Hoc Jobs*, add `"package",` (in between `mount` and `ping` to keep the alphabatical order).
+* In the text area *Ansible Modules Allowed for Ad Hoc Jobs*, add `"package",` (in between `mount` and `ping` to keep the alphabetical order).
 
 !!! warning
     The text area contains a list! Ensure that it is a valid YAML (or JSON) list structure!
