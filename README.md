@@ -1,10 +1,9 @@
 # Ansible Workshop Exercises
 
-This repository contains all exercise descriptions for my Ansible Workshop, utilizing the Red Hat demo environment. The Workshop is inspired by the [Red Hat Training course for Ansible](https://github.com/ansible/workshops), but adds additional exercises and more descriptions for a multi-day workshop.
-The exercises are build with MkDocs and published to [Github pages](https://computacenter-com.github.io/ansible-workshop-exercises).
+This repository contains all exercise descriptions for the Computacenter Ansible Workshop, utilizing the Red Hat demo environment. The Workshop is inspired by the [Red Hat Training course for Ansible](https://github.com/ansible/workshops), but adds additional exercises and more descriptions for a multi-day workshop.
+The exercises are build with Zensical and published to [Github pages](https://computacenter-com.github.io/ansible-workshop-exercises).
 
-[![Integration](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/ci.yml/badge.svg)](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/ci.yml) [![Deploy MkDocs to Github pages](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/cd.yml/badge.svg)](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/cd.yml) [![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/) [![prek](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json)](https://github.com/j178/prek)
-
+[![Integration](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/ci.yml/badge.svg)](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/ci.yml) [![Deploy MkDocs to Github pages](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/cd.yml/badge.svg)](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/cd.yml) [![Zensical Badge](https://img.shields.io/badge/Made_with_Zensical-grey?logo=zensical)](https://zensical.org/about/) [![prek](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json)](https://github.com/j178/prek)
 ## Manual build
 
 A *Containerfile* is provided which bundles all requirements and displays the resulting content in a webserver.
