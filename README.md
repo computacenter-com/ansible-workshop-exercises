@@ -4,6 +4,7 @@ This repository contains all exercise descriptions for the Computacenter Ansible
 The exercises are build with Zensical and published to [Github pages](https://computacenter-com.github.io/ansible-workshop-exercises).
 
 [![Integration](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/ci.yml/badge.svg)](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/ci.yml) [![Deploy MkDocs to Github pages](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/cd.yml/badge.svg)](https://github.com/computacenter-com/ansible-workshop-exercises/actions/workflows/cd.yml) [![Zensical Badge](https://img.shields.io/badge/Made_with_Zensical-grey?logo=zensical)](https://zensical.org/about/) [![prek](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json)](https://github.com/j178/prek)
+
 ## Manual build
 
 A *Containerfile* is provided which bundles all requirements and displays the resulting content in a webserver.
