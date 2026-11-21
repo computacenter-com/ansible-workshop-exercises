@@ -3,14 +3,17 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 7 * * 1'
+permissions: {}
 jobs:
   md-dead-link-check:
     name: Check all links weekly
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          persist-credentials: false
       - name: Check all links
-        uses: AlexanderDokuchaev/md-dead-link-check@v1.3.0
+        uses: AlexanderDokuchaev/md-dead-link-check@5b5641a92ec95d13a5b04927e0e11de5c3405298
         with:
           config: .config/md_dead_link_check.ini

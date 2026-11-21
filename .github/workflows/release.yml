@@ -11,17 +11,20 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          persist-credentials: false
       - name: Get current date and format to CalVer string
         run: echo "release_tag=$(date +'%Y.%m.%d')" >> "$GITHUB_OUTPUT"
         id: release_tag_definition
       - name: Create new release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STEPS_RELEASE_TAG_DEFINITION_OUTPUTS_RELEASE_TAG: ${{ steps.release_tag_definition.outputs.release_tag }}
         run: |
-          gh release create "${{ steps.release_tag_definition.outputs.release_tag }}" \
+          gh release create "${STEPS_RELEASE_TAG_DEFINITION_OUTPUTS_RELEASE_TAG}" \
               --repo="$GITHUIB_REPOSITORY" \
-              --title="${{ steps.release_tag_definition.outputs.release_tag }}" \
+              --title="${STEPS_RELEASE_TAG_DEFINITION_OUTPUTS_RELEASE_TAG}" \
               --generate-notes \
               --fail-on-no-commits
   call-deployment:
@@ -32,4 +35,4 @@ jobs:
       pages: write
       id-token: write
       packages: write
-    uses: ./.github/workflows/cd.yml
+    uses: $/.github/workflows/cd.yml

@@ -3,19 +3,21 @@ name: Integration
 on:
   workflow_dispatch:
   pull_request:
-
+permissions: {}
 jobs:
   check:
     name: Run integration checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
       - name: Setup Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: '3.14'
       - name: Run hooks with prek
-        uses: j178/prek-action@v3.1.1
+        uses: j178/prek-action@7b101f8338a08d2bd6fdb3625e4e7692428763a3
         env:
           SKIP: ${{ github.event_name == 'workflow_dispatch' && 'no-commit-to-branch' || '' }}
