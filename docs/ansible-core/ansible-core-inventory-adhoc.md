@@ -1,10 +1,11 @@
-# 2 - The Ansible Basics
+# 2 - Prepare for Ansible automation
 
-[](){ #ansible-core-basics }
+[](){ #ansible-core-inventory-adhoc }
 
 ## Objective
 
-In this exercise, we are going to explore the Ansible command line utility `ansible-inventory` to learn how to work with inventory files, using the utility `ansible` to run commands on hosts in the inventory file and using the `ansible-inventory` utility.  
+In this exercise, we will prepare Ansible to automate our target nodes. We will configure Ansible and create the Ansible inventory.  
+We are going to explore the Ansible command line utility `ansible-inventory` to learn how to work with inventory files, using the utility `ansible` to run commands on hosts in the inventory file and using the `ansible-inventory` utility.  
 The goal is to familiarize yourself with some of the different cli tools Ansible provides and how it can be used to enrich your Ansible experience.
 
 This exercise will cover
