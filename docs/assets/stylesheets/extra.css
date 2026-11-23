@@ -1,3 +1,10 @@
+.md-grid {
+  max-width: 1440px;
+}
+:root {
+  --md-tooltip-width: 500px;
+}
+
 /* Light mode */
 [data-md-color-scheme="default"] {
   --md-primary-fg-color:        #49ABEB;

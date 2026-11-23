@@ -9,8 +9,8 @@ The first workshop day is all about getting to know Ansible and learning to writ
 
 You will complete the following exercises today:
 
-* [Exercise 1 - Check the Prerequisites][ansible-core-intro]
-* [Exercise 2 - The Ansible Basics][ansible-core-basics]
+* [Exercise 1 - Check the demo environment][ansible-core-intro]
+* [Exercise 2 - Prepare for Ansible automation][ansible-core-inventory-adhoc]
 * [Exercise 3 - Writing your first Playbook][ansible-core-playbook]
 * [Exercise 4 - Using Variables][ansible-core-variables]
 * [Exercise 5 - Work with conditionals][ansible-core-conditionals]

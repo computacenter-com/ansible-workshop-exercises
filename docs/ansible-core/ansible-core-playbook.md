@@ -48,7 +48,7 @@ A Playbook should be **idempotent**, so if a Playbook is run once to put the hos
 
 ### Step 2 - Directory Structure and files for your Playbook
 
-Enough theory, it’s time to create your first Ansible playbook. In this lab you create a playbook to set up an Apache web server in three steps:
+Enough theory, it's time to create your first Ansible playbook. In this lab you create a playbook to set up an Apache web server in three steps:
 
 1. Install httpd package
 2. Enable/start httpd service
@@ -77,7 +77,7 @@ Add a file called `apache.yml` with the following content. As discussed in the p
   become: true
 ```
 
-This shows one of Ansible’s strengths: The Playbook syntax is easy to read and understand. In this Playbook:
+This shows one of Ansible's strengths: The Playbook syntax is easy to read and understand. In this Playbook:
 
 * A name is given for the play via `name:`.
 * The host to run the playbook against is defined via `hosts:`.
@@ -271,7 +271,7 @@ This would be the same as checking the service state manually on `node1` with: `
 
 ### Step 5 - Extend your Playbook
 
-Check that the tasks were executed correctly and Apache is accepting connections: Make an HTTP request using Ansible’s `uri` module in a playbook named `check_httpd.yml` from the control node to `node1`.
+Check that the tasks were executed correctly and Apache is accepting connections: Make an HTTP request using Ansible's `uri` module in a playbook named `check_httpd.yml` from the control node to `node1`.
 
 ```yaml
 --8<-- "playbook-step5-check-httpd.yml"
@@ -310,7 +310,7 @@ Then create the file `~/ansible_files/files/web.html` on the control node:
 </body>
 ```
 
-Now, you’ll use Ansible's `copy` module in your playbook to *copy* a file from your controller to the managed node(s).
+Now, you'll use Ansible's `copy` module in your playbook to *copy* a file from your controller to the managed node(s).
 
 On the control node, as your student user, edit the file `~/ansible_files/apache.yml` and add a new task utilizing the `copy` module. It should now look like this:
 

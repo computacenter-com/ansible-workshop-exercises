@@ -102,7 +102,7 @@ A job template is a definition and set of parameters for running an Ansible job.
 
 * **What** playbook to use?
 
-Okay, let’s just do that: To create a Job Template, go to the **Automation Execution -> Templates** view, click the **Create template** button and choose **Create job template**.
+Okay, let's just do that: To create a Job Template, go to the **Automation Execution -> Templates** view, click the **Create template** button and choose **Create job template**.
 
 !!! tip
     Remember that you can often click on the question mark with a circle to get more details about the field.

@@ -33,7 +33,7 @@ The recommended practice to provide variables in the inventory, is to define the
 
 ### Step 1 - Create Variable Files
 
-For understanding and practice let’s do a lab. Following up on the theme "Let’s build a web server. Or two. Or even more…​", you will change the `index.html` to show the development environment (dev/prod) a server is deployed in.
+For understanding and practice let's do a lab. Following up on the theme "Let's build a web server. Or two. Or even more...", you will change the `index.html` to show the development environment (dev/prod) a server is deployed in.
 
 On the ansible control host, as the `student` user, create the directories to hold the variable definitions in `~/ansible_files/`:
 
@@ -41,7 +41,7 @@ On the ansible control host, as the `student` user, create the directories to ho
 [student@ansible-1 ansible_files]$ mkdir host_vars group_vars
 ```
 
-Now create two files containing variable definitions. We’ll define a variable named `stage` which will point to different environments, `dev` or `prod`:
+Now create two files containing variable definitions. We'll define a variable named `stage` which will point to different environments, `dev` or `prod`:
 
 * Create the file `~/ansible_files/group_vars/web.yml` with this content:
 

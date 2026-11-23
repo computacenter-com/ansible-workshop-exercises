@@ -8,18 +8,18 @@ Get to know *Handlers*, a special task which is defined in its own *play* parame
 
 ## Guide
 
-Sometimes when a task does make a change to the system, an additional task or tasks may need to be run. For example, a change to a service’s configuration file may then require that the service be restarted so that the changed configuration takes effect.
+Sometimes when a task does make a change to the system, an additional task or tasks may need to be run. For example, a change to a service's configuration file may then require that the service be restarted so that the changed configuration takes effect.
 
-This is where Ansible’s *handlers* come into play. Handlers can be seen as inactive tasks that only get triggered when explicitly invoked using the "notify" statement. Read more about them in the [Ansible Handlers](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html){:target="_blank"} documentation.
+This is where Ansible's *handlers* come into play. Handlers can be seen as inactive tasks that only get triggered when explicitly invoked using the "notify" statement. Read more about them in the [Ansible Handlers](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html){:target="_blank"} documentation.
 
 ### Step 1 - Handlers
 
-As a an example, let’s write a playbook that:
+As a an example, let's write a playbook that:
 
-* manages Apache’s configuration file `/etc/httpd/conf/httpd.conf` on all hosts in the `web` group
+* manages Apache's configuration file `/etc/httpd/conf/httpd.conf` on all hosts in the `web` group
 * restarts Apache when the file has changed
 
-First we need the file Ansible will deploy, let’s just take the one from node1.
+First we need the file Ansible will deploy, let's just take the one from node1.
 
 ```bash
 scp node1:/etc/httpd/conf/httpd.conf ~/ansible_files/files/.
@@ -32,13 +32,13 @@ Next, create the Playbook `httpd_conf.yml`. Make sure that you are in the direct
 --8<-- "handlers-step1-http-conf.yml"
 ```
 
-So what’s new here?
+So what's new here?
 
 * The `handlers` key (line 5) defines a task that is only run on notification. You can define multiple tasks (handlers) here.
 * The `listen` key (line 7) defines the keyword which triggers the handler. You could also use the name of the handler task.
 * The `notify` parameter calls the handler (by referencing the *listen* keyword) only when the copy task actually changes the file. That way the service is only restarted if needed - and not each time the playbook is run.
 
-Run the playbook. We didn’t change anything in the file yet so there should not be any `changed` lines in the output and of course the handler shouldn’t have fired.
+Run the playbook. We didn't change anything in the file yet so there should not be any `changed` lines in the output and of course the handler shouldn't have fired.
 
 * Now change the `Listen 80` line in `~/ansible_files/files/httpd.conf` to:
 
@@ -46,7 +46,7 @@ Run the playbook. We didn’t change anything in the file yet so there should no
 Listen 8080
 ```
 
-* Run the playbook again. Now the Ansible’s output should be a lot more interesting:
+* Run the playbook again. Now the Ansible's output should be a lot more interesting:
 
     * httpd.conf should have been copied over
     * The handler should have restarted Apache

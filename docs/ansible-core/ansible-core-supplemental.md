@@ -2,7 +2,7 @@
 
 [](){ #ansible-core-supplemental }
 
-You have finished the lab already. But it doesn’t have to end here. We prepared some slightly more advanced bonus labs for you to follow through if you like. So if you are done with the labs and still have some time, here are some more labs for you:
+You have finished the lab already. But it doesn't have to end here. We prepared some slightly more advanced bonus labs for you to follow through if you like. So if you are done with the labs and still have some time, here are some more labs for you:
 
 ## Bonus Lab 1: Prepare infrastructure
 
@@ -228,9 +228,9 @@ Create a new user "testuser" on `node1` and `node3` with a comment using an ad h
 
 ## Bonus Lab 3: Templates and Variables
 
-You have learned the basics about Ansible templates, variables and handlers. Let’s combine all of these.
+You have learned the basics about Ansible templates, variables and handlers. Let's combine all of these.
 
-Instead of editing and copying `httpd.conf` why don’t you just define a variable for the listen port and use it in a template? Here is your job:
+Instead of editing and copying `httpd.conf` why don't you just define a variable for the listen port and use it in a template? Here is your job:
 
 * Define a variable `listen_port` for the `web` group with the value `8080` and another for `node2` with the value `80` using the proper files.
 

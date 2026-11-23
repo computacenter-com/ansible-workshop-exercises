@@ -51,7 +51,7 @@ Next create the file `ftpserver.yml` on your control host in the `~/ansible_file
 ```
 
 !!! tip
-    By now you should know how to run Ansible Playbooks, we’ll start to be less verbose in this guide. Go create and run it. :-)
+    By now you should know how to run Ansible Playbooks, we'll start to be less verbose in this guide. Go create and run it. :-)
 
 Run it and examine the output. The expected outcome: The task is skipped on node1, node3 and the ansible host (your control host) because they are not in the ftpserver group in your inventory file.
 

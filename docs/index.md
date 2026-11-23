@@ -11,10 +11,10 @@ Ansible is a radically simple IT automation system. It handles configuration man
 You will learn all about Ansible:
 
 1. starting with the basics of understanding foundational command line activities
-2. applying what you’ve learned to implement Ansible automation controller to your enterprise use cases.
+2. applying what you've learned to implement Ansible automation controller to your enterprise use cases.
 3. learn about the Ansible future and network automation
 
-You’ll start off by writing your first Ansible playbook, work on Jinja templates, and implement higher-level Ansible roles. Next you’ll get started on automation controller, understand inventory and credential management, projects, job templates, surveys, workflows and more.
+You'll start off by writing your first Ansible playbook, work on Jinja templates, and implement higher-level Ansible roles. Next you'll get started on automation controller, understand inventory and credential management, projects, job templates, surveys, workflows and more.
 
 !!! tip "How to use the guide"
     The exercise guide contains loads of explanation for every topic, **don't just skip over everything** and only *copy-paste* the commands to *finish* the exercises. **Take your time!**  

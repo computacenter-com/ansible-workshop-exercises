@@ -430,7 +430,7 @@ ansible                    : ok=3    changed=0    unreachable=0    failed=0    s
 
 ### Step 5 - Extend your Playbook: Create an web.html
 
-Check that the tasks were executed correctly and Apache is accepting connections: Make an HTTP request using Ansible’s `uri` module in a playbook named check_httpd.yml from the control node to `node1`.
+Check that the tasks were executed correctly and Apache is accepting connections: Make an HTTP request using Ansible's `uri` module in a playbook named check_httpd.yml from the control node to `node1`.
 
 ```yaml
 ---
@@ -467,7 +467,7 @@ Then create the file `~/ansible_files/files/web.html` on the control node:
 </body>
 ```
 
-In a previous example, you used Ansible’s `copy` module to write text supplied on the command line into a file. Now you’ll use the module in your playbook to copy a file.
+In a previous example, you used Ansible's `copy` module to write text supplied on the command line into a file. Now you'll use the module in your playbook to copy a file.
 
 On the control node as your student user edit the file `~/ansible_files/apache.yml` and add a new task utilizing the `copy` module. It should now look like this:
 
