@@ -52,7 +52,7 @@ The Ansible automation controller provided in this lab is individually setup for
 The **automation controller** is a key component of Ansible Automation Platform. It offers a web-based interface that provides a centralized point to manage, monitor, and control automation.  
 Let's have a first look at the **automation controller**: Point your browser to the URL you were given, similar to `https://controller.6rr99.sandbox2326.opentlc.com` (the current workshop ID will be different) and log in as `admin`. The password will be provided by the instructor.
 
-The controller’s dashboard offers a real-time view of recent job activity, managed hosts and hands-on quick starts to get you started as quickly as possible with Ansible Automation Platform.
+The controller's dashboard offers a real-time view of recent job activity, managed hosts and hands-on quick starts to get you started as quickly as possible with Ansible Automation Platform.
 
 ![Ansible automation controller dashboard](images/aap25-dashboard.png){ loading=lazy .on-glb }
 

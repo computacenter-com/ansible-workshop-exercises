@@ -12,7 +12,7 @@ Ansible collections support a wide range of vendors, device types, and actions, 
 ## Objective
 
 Get to know network automation with Ansible. Network automation uses the basic Ansible concepts, but there are some differences in how the network modules work.  
-**Unlike most Ansible modules, network modules do not run on the managed nodes.** From a user’s point of view, network modules work like any other modules. They work with ad hoc commands, playbooks, and roles.  
+**Unlike most Ansible modules, network modules do not run on the managed nodes.** From a user's point of view, network modules work like any other modules. They work with ad hoc commands, playbooks, and roles.  
 Behind the scenes, however, network modules use a different methodology than the other (Linux/Unix and Windows) modules use. Ansible is written and executed in Python. Because the majority of network devices can not run Python, the Ansible network modules are executed on the Ansible control node.
 
 You will execute automation tasks against the **Cisco ACI APIC.**

@@ -13,7 +13,7 @@ And the workflows are not even limited to Job Templates, but can also include pr
 
 This enables new applications for Ansible automation controller: different Job Templates can build upon each other. E.g. the networking team creates playbooks with their own content, in their own Git repository and even targeting their own inventory, while the operations team also has their own repos, playbooks and inventory.
 
-In this lab you’ll learn how to setup a workflow.
+In this lab you'll learn how to setup a workflow.
 
 ## Guide
 
@@ -51,7 +51,7 @@ First you have to set up the Git repo as a Project like you normally would.
 !!! warning
     If you are still logged in as user **wweb**, log out of and log in as user **admin**.
 
-Within **Automation Execution → Projects**, click **Create Project** to set up the web operations team’s project: Fill out the form as follows:
+Within **Automation Execution → Projects**, click **Create Project** to set up the web operations team's project: Fill out the form as follows:
 
 | Parameter                        | Value                                                                                                                            |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |

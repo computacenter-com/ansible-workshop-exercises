@@ -16,7 +16,7 @@ There are three types of users in Ansible Automation Controller:
 * **Ansible Automation Platform Auditor**: Read-only access to all objects within the automation controller environment.
 * **Ansible Automation Platform Administrator**: Full admin privileges over the entire automation controller installation.
 
-Let’s create a user:
+Let's create a user:
 
 * Navigate to **Access Management → Users**.
 * Click the **Create user** button.
@@ -93,7 +93,7 @@ Previously, you'll had to provide a *Machine credential*, we need to add the per
 
 ### Test permissions
 
-Now log out of automation controller’s web UI and in again as the **wweb** user.
+Now log out of automation controller's web UI and in again as the **wweb** user.
 
 * Navigate to **Templates**. You should only see the `Create index.html` template listed. He is allowed to view and launch, but not to edit the Template (no Edit button available).
 * Run the job by clicking the rocket icon. Enter the required values for the survey questions and launch the job.

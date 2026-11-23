@@ -8,7 +8,7 @@ This is the final challenge where we try to put most of what you have learned to
 
 ## Guide
 
-### Let’s set the stage
+### Let's set the stage
 
 Your operations team and your application development team likes what they see in Ansible automation controller. To really use it in their environment they put together these requirements:
 

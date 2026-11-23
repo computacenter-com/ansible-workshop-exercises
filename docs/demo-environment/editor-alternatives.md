@@ -1,11 +1,11 @@
 # Editor Alternatives
 
 It is recommended to use the **VS Code Editor** for your exercises, if you don't like it, you may use **vi** or **vim** in the terminal directly.  
-If you don’t like these as an editor as well, feel free to use **Nano** or **Midnight Commander** (**mc**) in the SSH terminal. Here is a quick introduction to both. And no, I’ll refuse to talk about Emacs…​ ;-)
+If you don't like these as an editor as well, feel free to use **Nano** or **Midnight Commander** (**mc**) in the SSH terminal. Here is a quick introduction to both. And no, I'll refuse to talk about Emacs…​ ;-)
 
 ## Midnight Commander (mc)
 
-Mc is more then an editor, it’s a file manager. And it has this nice nineties feel about it…​ anyway we’ll focus on editing files here.
+Mc is more then an editor, it's a file manager. And it has this nice nineties feel about it…​ anyway we'll focus on editing files here.
 
 To open **mc** at the command-line prompt type:
 
@@ -17,9 +17,9 @@ Mc is controlled mainly through the function keys. This can pose all kinds of is
 
 To work around this:
 
-* Try the combination ++esc++ ++0++ to get ++f10++. Don’t hold ++esc++!
+* Try the combination ++esc++ ++0++ to get ++f10++. Don't hold ++esc++!
 
-* Use the mouse, all **mc** keys should be clickable, even if they don’t look it.
+* Use the mouse, all **mc** keys should be clickable, even if they don't look it.
 
 To create a new file:
 
@@ -71,7 +71,7 @@ Paste text from external source:
 
 ## Short Intro to the Nano Editor
 
-If you don’t like **Vim** and you feel too young for **Midnight Commander** use **Nano**, a simple to use command line editor.
+If you don't like **Vim** and you feel too young for **Midnight Commander** use **Nano**, a simple to use command line editor.
 
 ### Basic Commands
 

@@ -17,7 +17,7 @@ This exercise will cover:
 
 ### Examine an Inventory
 
-The first thing we need is an inventory of your managed hosts. This is the equivalent of an inventory file in Ansible Engine. There is a lot more to it (like dynamic inventories) but let’s start with the basics.
+The first thing we need is an inventory of your managed hosts. This is the equivalent of an inventory file in Ansible Engine. There is a lot more to it (like dynamic inventories) but let's start with the basics.
 
 You should already have the web UI open, if not: Point your browser to the URL you were given, similar to `https://controller.6rr99.sandbox2326.opentlc.com` (the current workshop ID will be different) and log in as `admin`. The password will be provided by the instructor.
 
@@ -76,7 +76,7 @@ In the **Review** window, check the input again and click **Finish**.
 
 ---
 
-The simple **ping** module doesn’t need options. For other modules you need to supply the command to run as an argument. Try the **command** module to find the userid of the executing user using an ad hoc command.
+The simple **ping** module doesn't need options. For other modules you need to supply the command to run as an argument. Try the **command** module to find the userid of the executing user using an ad hoc command.
 
 * In the web UI go to **Automation Execution → Infrastructure → Inventories** and select *Workshop Inventory*
 
@@ -120,7 +120,7 @@ In the **Review** window, check the input again and click **Finish**.
 !!! warning
     **Expect an error\!**
 
-Oops, the last one didn’t went well, all red.
+Oops, the last one didn't went well, all red.
 
 Run a new ad hoc job, **but this time check the checkbox labeled *Privilege escalation***.
 

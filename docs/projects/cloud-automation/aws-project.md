@@ -10,7 +10,7 @@ Together, they perform in harmony to create a better experience for developers a
 
 Get to know cloud automation with Ansible.  
 Cloud automation uses the basic Ansible concepts, but there are some differences in how the modules work.  
-From a user’s point of view, cloud modules work like any other modules. They work with ad hoc commands, playbooks, and roles.
+From a user's point of view, cloud modules work like any other modules. They work with ad hoc commands, playbooks, and roles.
 Behind the scenes, however, cloud modules use a different methodology than the other (Linux/Unix and Windows) modules use. As we are communicating with an API endpoint, but Ansible and most of its modules are written and executed in Python, you need to use the Python interpreter on the Ansible control node.
 
 ## Requirements
@@ -334,7 +334,7 @@ Achieve the following task:
 
 ### Step 2 - Create dynamic inventory
 
-When using Ansible with AWS, inventory file maintenance will be a hectic task as AWS frequently changes IPs, autoscaling instances, and more. Once your AWS EC2 hosts are spun up, you’ll probably want to talk to them again. With a cloud setup, it’s best not to maintain a static list of cloud hostnames in text files. Rather, the best way to handle this is to use the `aws_ec2` dynamic inventory plugin.  
+When using Ansible with AWS, inventory file maintenance will be a hectic task as AWS frequently changes IPs, autoscaling instances, and more. Once your AWS EC2 hosts are spun up, you'll probably want to talk to them again. With a cloud setup, it's best not to maintain a static list of cloud hostnames in text files. Rather, the best way to handle this is to use the `aws_ec2` dynamic inventory plugin.  
 
 Create a file `workshop.aws_ec2.yml`
 

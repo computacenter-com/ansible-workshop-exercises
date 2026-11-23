@@ -4,11 +4,11 @@
 
 ## Objective
 
-Demonstrate the use of Ansible Automation controller [survey feature](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/using_automation_execution/controller-job-templates#controller-surveys-in-job-templates){:target="_blank"}. Surveys set extra variables for the playbook similar to ‘Prompt for Extra Variables’ does, but in a user-friendly question and answer way. Surveys also allow for validation of user input.
+Demonstrate the use of Ansible Automation controller [survey feature](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/using_automation_execution/controller-job-templates#controller-surveys-in-job-templates){:target="_blank"}. Surveys set extra variables for the playbook similar to ‘Prompt for Extra Variables' does, but in a user-friendly question and answer way. Surveys also allow for validation of user input.
 
 ## Guide
 
-You have installed Apache on all hosts in the job you just ran. Now we’re going to extend on this:
+You have installed Apache on all hosts in the job you just ran. Now we're going to extend on this:
 
 * Use a proper role that has a Jinja2 template to deploy an `index.html` file.
 
