@@ -28,7 +28,7 @@ scp node1:/etc/httpd/conf/httpd.conf ~/ansible_files/files/.
 We now have the configuration file for our webserver, we will adjust the file later and copy it back to all webserver hosts later.  
 Next, create the Playbook `httpd_conf.yml`. Make sure that you are in the directory `~/ansible_files`.
 
-```yaml linenums="1"
+```yaml linenums="1" hl_lines="5 7 19"
 --8<-- "handlers-step1-http-conf.yml"
 ```
 

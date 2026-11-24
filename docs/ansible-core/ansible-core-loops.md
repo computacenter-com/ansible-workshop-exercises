@@ -136,11 +136,13 @@ Afterwards, verify that the user `prod_user` was indeed created on `node1` using
 
 !!! hint
     It is possible to insert a *string* directly into the dictionary structure like this (although it makes the task less flexible):
-    ```  { .yaml .no-copy }
+
+    ``` { .yaml .no-copy }
     - name: Output info for user
       ansible.builtin.debug:
-        msg: "{{ myuser }} uid: {{ getent_passwd{--[myuser]--}{++['prod_user']++}[1] }}"
+        msg: "{{ myuser }} uid: {{ getent_passwd['prod_user'][1] }}"
     ```
+
     As you can see the *value* (`prod_user`) of the variable `myuser` is used directly. It must be enclosed in single quotes. You can't use normal quotation marks, as these are used outside of the whole variable.
 
 ### Step 3 - Loops with *list*-variable
