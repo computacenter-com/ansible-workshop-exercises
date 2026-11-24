@@ -314,7 +314,7 @@ Now, you'll use Ansible's `copy` module in your playbook to *copy* a file from y
 
 On the control node, as your student user, edit the file `~/ansible_files/apache.yml` and add a new task utilizing the `copy` module. It should now look like this:
 
-```yaml
+```yaml hl_lines="17-23"
 --8<-- "playbook-step5-apache.yml"
 ```
 
@@ -355,7 +355,7 @@ node3 ansible_host=node3.example.com
 
 Change the playbook `hosts` parameter to point to `web` instead of `node1`:
 
-```yaml
+```yaml hl_lines="3"
 --8<-- "playbook-step6-apache.yml"
 ```
 

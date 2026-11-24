@@ -62,7 +62,26 @@ You can create [personal login credentials](https://demo.netbox.dev/plugins/demo
 
 !!! warning
     When creating a `V2` token (default version), you'll need the `key.token` value (the key starts with `nbt_<key value>`)!  
-    Basically, copy everything **except** `Bearer `!
+    Basically, copy everything **except** `Bearer `! **Save the token in a separate textfile, you can't retrieve the value later!**  
+    <figure markdown="span">
+    ![Netbox Token](images/netbox-token.png){ width="650" }
+    <figcaption></figcaption>
+
+    </figure>
+
+After creating the API token in the Netbox UI, go back to your terminal. You will *export* the Netbox token (and the Netbox URL) as an **environment variable**, this is a good way to supply sensitive content.  
+Note, environment variables are only defined in the current bash session, once you open a new terminal, you'll need to export the variables again!
+
+!!! tip inline end
+    Use a whitespace in front of the `export` command, this prevents logging in the bash history.
+
+```bash
+export NETBOX_URL='https://demo.netbox.dev/'
+```
+
+```bash
+ export NETBOX_TOKEN='nbt_YgdTA6....bAybU'
+```
 
 #### 1.1 - Get modules
 
@@ -234,6 +253,10 @@ pip3 install ansible-core==2.16.18
     libyaml = True
     ```
 
+!!! tip
+    **Your playbook/task utilizing the Netbox modules might fail later on because of missing Python modules/packages!**  
+    Install the necessary Python packages into this Python VE the same way as you installed `ansible-core`.
+
 #### 1.3 - Ansible Configuration
 
 Lastly, create a small Ansible configuration file in your project root folder with the following content:
@@ -248,7 +271,7 @@ This ensures that the correct Python interpreter is used where all your installe
 Achieve the following tasks:
 
 * [X] Find appropriate collection for Netbox automation in the documentation
-* [X] Collection installed
+* [X] Collection installed on your Control Node
 * [X] Python package manager installed and usable
 * [X] Ansible configuration file present in project root folder
 
@@ -263,14 +286,14 @@ Within your newly created project folder, create a playbook file and a role skel
     **Achieving the initial successful communication with your target(s) is (in most cases) the hardest part when you are new to Ansible!** Don't be discouraged, you'll get there :smile:
 
 You **can** achieve the solution with **or** without an inventory file!  
+
 An Ansible *play* always needs a *target* (mostly group/groups from the inventory) and (most) Ansible modules require a Python interpreter. Instruct Ansible to use the [`local` connection](https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_delegation.html#local-playbooks){:target="_blank"} method (variable is called `ansible_connection` in the inventory or `connection` as a play parameter), this way Ansible will use the Python interpreter of your control node/the host you are working on (= `localhost`). The actual API endpoint and API token are provided via module parameters later on!
 
 Testing the successful communication with the API could be done by querying all available tenants with the `nb_lookup` plugin. Take a look at the [documentation](https://docs.ansible.com/ansible/latest/index.html){:target="_blank"} for how to use it, use the *search* to find it.  
 Create your playbook and add a task with the *ansible.builtin.debug* module, the `msg` utilizing the *lookup plugin*.  
 In the documented example the loop uses the query function, instead of `devices` search for `tenant`, the variable to output can be `#!jinja {{ item.value.display }}` for the name of the respective tenant.  
-Run your playbook, if it returns a green *ok* status and outputs tenant names, communication is established.
 
-??? question "Help wanted?"
+!!! question "Help wanted?"
 
     Use the following task to get a list of all already configured tenants.
 
@@ -278,15 +301,28 @@ Run your playbook, if it returns a green *ok* status and outputs tenant names, c
     - name: Obtain list of tenants from NetBox
       ansible.builtin.debug:
         msg: "{{ item.value.display }}"
-      loop: "{{ query('netbox.netbox.nb_lookup', 'tenants', api_endpoint='https://demo.netbox.dev/', token='YOUR_NETBOX_TOKEN') }}"
+      loop: "{{ query('netbox.netbox.nb_lookup', 'tenants') }}"
       loop_control:
-        label: "ID: {{ item.key }}"
+        label: "Tenant ID: {{ item.key }}"
     ```
 
     The *loop_control* is not really necessary, but improves readability.
 
     !!! tip
-        You need to input your personal API token.
+        The `nb_lookup` plugin uses the environment variables `NETBOX_URL` and `NETBOX_TOKEN` you exported earlier!  
+        Some modules might not use the environment variables, still you can access the value in a variable with the Ansible `env` lookup plugin:
+
+        ```python
+        {{ lookup('env', 'NETBOX_URL') }}
+        ```
+
+        **You might need this later on...**
+
+Run your playbook, if it returns a green *ok* status and outputs tenant names, communication is established.
+
+!!! failure "Task failed?"
+    You are missing a **Python dependency**!  
+    Install the stated Python library with `pip3 install ...`.
 
 Achieve the following tasks:
 
@@ -310,10 +346,6 @@ The goal is to create a new Netbox tenant with Ansible. The tenant should have t
 
 !!! warning
     Replace `<Initials>` with your personal initials to identify the objects later on.
-
-!!! failure "ModuleNotFoundError?"
-    You are missing a **Python dependency**!  
-    Install the stated Python library with `pip3 install ...`.
 
 Achieve the following tasks:
 <div class="annotate" markdown>
